@@ -96,7 +96,7 @@ Read more about control flow statements in Dart, including [`break` and `continu
 
 [We recommend](https://dart.dev/effective-dart/design#types) specifying the types of each function’s arguments and return value:
 
-​	我们[建议]({{< ref "/EffectiveDart/Design#types-类型">}})指定每个函数的参数和返回值的类型：
+​	我们[建议]({{< ref "/EffectiveDart/Design#类型-types">}})指定每个函数的参数和返回值的类型：
 
 ```dart
 int fibonacci(int n) {
@@ -109,7 +109,7 @@ var result = fibonacci(20);
 
 A shorthand `=>` (*arrow*) syntax is handy for functions that contain a single statement. This syntax is especially useful when passing anonymous functions as arguments:
 
-​	对于包含单个语句的函数，简写 `=>` （箭头）语法非常方便。在将匿名函数作为参数传递时，此语法特别有用：
+​	对于包含单个语句的函数，简写 `=>` （箭头）语法非常方便。在将匿名函数作为实参传递时，此语法特别有用：
 
 ```dart
 flybyObjects.where((name) => name.contains('turn')).forEach(print);
@@ -117,7 +117,7 @@ flybyObjects.where((name) => name.contains('turn')).forEach(print);
 
 Besides showing an anonymous function (the argument to `where()`), this code shows that you can use a function as an argument: the top-level `print()` function is an argument to `forEach()`.
 
-​	除了显示一个匿名函数（ `where()` 的参数），此代码还显示您可以将函数用作参数：顶级 `print()` 函数是 `forEach()` 的参数。
+​	除了显示一个匿名函数（ `where()` 的实参），此代码还显示您可以将函数用作实参：顶级 `print()` 函数是 `forEach()` 的实参。
 
 [Read more](https://dart.dev/language/functions) about functions in Dart, including optional parameters, default parameter values, and lexical scope.
 
@@ -410,8 +410,7 @@ Future<void> createDescriptions(Iterable<String> objects) async {
       var file = File('$object.txt');
       if (await file.exists()) {
         var modified = await file.lastModified();
-        print(
-            'File for $object already exists. It was modified on $modified.');
+        print('File for $object already exists. It was modified on $modified.');
         continue;
       }
       await file.create();
@@ -477,7 +476,7 @@ Note that the code above is asynchronous; `try` works for both synchronous code 
 
 [Read more](https://dart.dev/language/error-handling#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between `Error` and `Exception`.
 
-​	阅读有关[异常]({{< ref "/Language/Errorhandling#exceptions-异常">}})的更多信息，包括堆栈跟踪、 `rethrow` 以及 `Error` 和 `Exception` 之间的差异。
+​	阅读有关[异常]({{< ref "/Language/Errorhandling#exceptions-异常">}})的更多信息，包括栈跟踪、 `rethrow` 以及 `Error` 和 `Exception` 之间的差异。
 
 ## 重要概念 Important concepts 
 
@@ -487,7 +486,7 @@ As you continue to learn about the Dart language, keep these facts and concepts 
 
 - Everything you can place in a variable is an *object*, and every object is an instance of a *class*. Even numbers, functions, and `null` are objects. With the exception of `null` (if you enable [sound null safety](https://dart.dev/null-safety)), all objects inherit from the [`Object`](https://api.dart.dev/stable/dart-core/Object-class.html) class.
   
-- 您可以放入变量中的所有内容都是对象，每个对象都是某个类的实例。即使是数字、函数和 `null` 也是对象。除了 `null` （如果您启用了[健全的空安全]({{< ref "/Language/Nullsafety/Soundnullsafety">}})）之外，所有对象都继承自 `Object` 类。
+- 您可以放入变量中的所有内容都是对象，每个对象都是某个类的实例。即使是数字、函数和 `null` 也是对象。除了 `null` （如果您启用了[健全的空安全]({{< ref "/Language/Nullsafety/Soundnullsafety">}})）之外，所有对象都继承自 [`Object`](https://api.dart.dev/stable/dart-core/Object-class.html) 类。
   
   *merge_type* **Version note:** [Null safety](https://dart.dev/null-safety) was introduced in Dart 2.12. Using null safety requires a [language version](https://dart.dev/guides/language/evolution#language-versioning) of at least 2.12.
   
@@ -510,8 +509,9 @@ As you continue to learn about the Dart language, keep these facts and concepts 
 - Dart 支持泛型类型，例如 `List<int>` （整数列表）或 `List<Object>` （任何类型的对象列表）。
   
 - Dart supports top-level functions (such as `main()`), as well as functions tied to a class or object (*static* and *instance methods*, respectively). You can also create functions within functions (*nested* or *local functions*).
-  Dart 支持顶级函数（例如 `main()` ），以及与类或对象绑定的函数（分别为静态方法和实例方法）。您还可以在函数内创建函数（嵌套或局部函数）。
-
+  
+- Dart 支持顶级函数（例如 `main()` ），以及与类或对象绑定的函数（分别为静态方法和实例方法）。您还可以在函数内创建函数（嵌套或局部函数）。
+  
 - Similarly, Dart supports top-level *variables*, as well as variables tied to a class or object (static and instance variables). Instance variables are sometimes known as *fields* or *properties*.
   
 - 同样，Dart 支持顶级变量，以及与类或对象绑定的变量（静态变量和实例变量）。实例变量有时称为字段或属性。

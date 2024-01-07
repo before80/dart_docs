@@ -15,15 +15,17 @@ draft = false
 Here are some guidelines for writing consistent, usable APIs for libraries.
 以下是一些为库编写一致、可用的 API 的准则。
 
-## Names 名称
+## 名称 Names 
 
 Naming is an important part of writing readable, maintainable code. The following best practices can help you achieve that goal.
-命名是编写可读、可维护代码的重要组成部分。以下最佳做法可以帮助您实现该目标。
+
+​	命名是编写可读、可维护代码的重要组成部分。以下最佳做法可以帮助您实现该目标。
 
 ### DO use terms consistently 确实要一致地使用术语
 
 Use the same name for the same thing, throughout your code. If a precedent already exists outside your API that users are likely to know, follow that precedent.
-在整个代码中，对相同的事物使用相同的名称。如果在用户可能了解的 API 外部已经存在先例，请遵循该先例。
+
+​	在整个代码中，对相同的事物使用相同的名称。如果在用户可能了解的 API 外部已经存在先例，请遵循该先例。
 
 ```
 pageCount         // A field.
@@ -38,12 +40,14 @@ Cartesian            // Unfamiliar to most users.
 ```
 
 The goal is to take advantage of what the user already knows. This includes their knowledge of the problem domain itself, the conventions of the core libraries, and other parts of your own API. By building on top of those, you reduce the amount of new knowledge they have to acquire before they can be productive.
-目标是利用用户已知的信息。这包括他们对问题域本身的了解、核心库的约定以及您自己 API 的其他部分。通过在这些基础上构建，您可以减少他们在能够发挥作用之前必须获取的新知识的数量。
+
+​	目标是利用用户已知的信息。这包括他们对问题域本身的了解、核心库的约定以及您自己 API 的其他部分。通过在这些基础上构建，您可以减少他们在能够发挥作用之前必须获取的新知识的数量。
 
 ### AVOID abbreviations 避免缩写
 
 Unless the abbreviation is more common than the unabbreviated term, don’t abbreviate. If you do abbreviate, [capitalize it correctly](https://dart.dev/effective-dart/style#identifiers).
-除非缩写比未缩写术语更常见，否则不要缩写。如果您确实缩写，请正确地使用大写字母。
+
+​	除非缩写比未缩写术语更常见，否则不要缩写。如果您确实缩写，请正确地使用大写字母。
 
 ```
 pageCount
@@ -59,7 +63,8 @@ HypertextTransferProtocolRequest
 ### PREFER putting the most descriptive noun last 优先将最具描述性的名词放在最后
 
 The last word should be the most descriptive of what the thing is. You can prefix it with other words, such as adjectives, to further describe the thing.
-最后一个词应该是对事物最具描述性的。您可以用其他词（例如形容词）作为前缀，以进一步描述事物。
+
+​	最后一个词应该是对事物最具描述性的。您可以用其他词（例如形容词）作为前缀，以进一步描述事物。
 
 ```
 pageCount             // A count (of pages).
@@ -74,7 +79,8 @@ RuleFontFaceCss           // Not a CSS.
 ### CONSIDER making the code read like a sentence 考虑让代码读起来像一个句子
 
 When in doubt about naming, write some code that uses your API, and try to read it like a sentence.
-在对命名感到疑惑时，编写一些使用您的 API 的代码，并尝试像阅读句子一样阅读它。
+
+​	在对命名感到疑惑时，编写一些使用您的 API 的代码，并尝试像阅读句子一样阅读它。
 
 ```dart
 // "If errors is empty..."
@@ -96,7 +102,8 @@ monsters.filter((monster) => monster.hasClaws);
 ```
 
 It’s helpful to try out your API and see how it “reads” when used in code, but you can go too far. It’s not helpful to add articles and other parts of speech to force your names to *literally* read like a grammatically correct sentence.
-尝试您的 API 并查看在代码中使用时它如何“读取”很有帮助，但您可能会做得太过。添加冠词和其他词性以强制您的名称从字面上读起来像一个语法正确的句子是没有帮助的。
+
+​	尝试您的 API 并查看在代码中使用时它如何“读取”很有帮助，但您可能会做得太过。添加冠词和其他词性以强制您的名称从字面上读起来像一个语法正确的句子是没有帮助的。
 
 ```dart
 if (theCollectionOfErrors.isEmpty) ...
@@ -107,7 +114,8 @@ monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 ### PREFER a noun phrase for a non-boolean property or variable 为非布尔属性或变量选择名词短语
 
 The reader’s focus is on *what* the property is. If the user cares more about *how* a property is determined, then it should probably be a method with a verb phrase name.
-读者关注的是属性是什么。如果用户更关心属性是如何确定的，那么它可能应该是一个带有动词短语名称的方法。
+
+​	读者关注的是属性是什么。如果用户更关心属性是如何确定的，那么它可能应该是一个带有动词短语名称的方法。
 
 ```
 list.length
@@ -119,7 +127,8 @@ list.deleteItems
 ### PREFER a non-imperative verb phrase for a boolean property or variable 为布尔属性或变量选择非命令式动词短语
 
 Boolean names are often used as conditions in control flow, so you want a name that reads well there. Compare:
-布尔名称通常用作控制流中的条件，因此您需要一个在那里读起来很顺畅的名称。比较：
+
+​	布尔名称通常用作控制流中的条件，因此您需要一个在那里读起来很顺畅的名称。比较：
 
 ```
 if (window.closeable) ...  // Adjective.
@@ -127,17 +136,19 @@ if (window.canClose) ...   // Verb.
 ```
 
 Good names tend to start with one of a few kinds of verbs:
-好名称往往以几种动词之一开头：
+
+​	好名称往往以几种动词之一开头：
 
 - a form of “to be”: `isEnabled`, `wasShown`, `willFire`. These are, by far, the most common.
-  “to be”的形式： `isEnabled` 、 `wasShown` 、 `willFire` 。这些是迄今为止最常见的。
+- “to be”的形式： `isEnabled` 、 `wasShown` 、 `willFire` 。这些是迄今为止最常见的。
 - an [auxiliary verb](https://en.wikipedia.org/wiki/Auxiliary_verb): `hasElements`, `canClose`, `shouldConsume`, `mustSave`.
-  助动词： `hasElements` 、 `canClose` 、 `shouldConsume` 、 `mustSave` 。
+- 助动词： `hasElements` 、 `canClose` 、 `shouldConsume` 、 `mustSave` 。
 - an active verb: `ignoresInput`, `wroteFile`. These are rare because they are usually ambiguous. `loggedResult` is a bad name because it could mean “whether or not a result was logged” or “the result that was logged”. Likewise, `closingConnection` could be “whether the connection is closing” or “the connection that is closing”. Active verbs are allowed when the name can *only* be read as a predicate.
-  一个主动语态动词： `ignoresInput` 、 `wroteFile` 。这些情况很少见，因为它们通常是模棱两可的。 `loggedResult` 是一个不好的名称，因为它可能表示“是否记录了结果”或“记录的结果”。同样地， `closingConnection` 可能是“连接是否正在关闭”或“正在关闭的连接”。当名称只能被视为谓词时，允许使用主动语态动词。
+- 一个主动语态动词： `ignoresInput` 、 `wroteFile` 。这些情况很少见，因为它们通常是模棱两可的。 `loggedResult` 是一个不好的名称，因为它可能表示“是否记录了结果”或“记录的结果”。同样地， `closingConnection` 可能是“连接是否正在关闭”或“正在关闭的连接”。当名称只能被视为谓词时，允许使用主动语态动词。
 
 What separates all these verb phrases from method names is that they are not *imperative*. A boolean name should never sound like a command to tell the object to do something, because accessing a property doesn’t change the object. (If the property *does* modify the object in a meaningful way, it should be a method.)
-所有这些动词短语与方法名称的区别在于，它们不是命令式的。布尔名称绝不应听起来像一个命令，告诉对象做某事，因为访问属性不会改变对象。（如果属性以有意义的方式修改对象，则它应为方法。）
+
+​	所有这些动词短语与方法名称的区别在于，它们不是命令式的。布尔名称绝不应听起来像一个命令，告诉对象做某事，因为访问属性不会改变对象。（如果属性以有意义的方式修改对象，则它应为方法。）
 
 ```
 isEmpty
@@ -157,7 +168,8 @@ showPopup     // Sounds like it shows the popup.
 ### CONSIDER omitting the verb for a named boolean *parameter* 考虑省略命名布尔参数的动词
 
 This refines the previous rule. For named parameters that are boolean, the name is often just as clear without the verb, and the code reads better at the call site.
-这细化了之前的规则。对于布尔类型的命名参数，名称通常在没有动词的情况下同样清晰，并且在调用站点处代码的可读性更好。
+
+​	这细化了之前的规则。对于布尔类型的命名参数，名称通常在没有动词的情况下同样清晰，并且在调用站点处代码的可读性更好。
 
 ```dart
 Isolate.spawn(entryPoint, message, paused: false);
@@ -168,10 +180,12 @@ var regExp = RegExp(pattern, caseSensitive: false);
 ### PREFER the “positive” name for a boolean property or variable 首选布尔属性或变量的“肯定”名称
 
 Most boolean names have conceptually “positive” and “negative” forms where the former feels like the fundamental concept and the latter is its negation—”open” and “closed”, “enabled” and “disabled”, etc. Often the latter name literally has a prefix that negates the former: “visible” and “*in*-visible”, “connected” and “*dis*-connected”, “zero” and “*non*-zero”.
-大多数布尔名称在概念上具有“肯定”和“否定”形式，其中前者感觉像是基本概念，而后者是否定——“打开”和“关闭”、“启用”和“禁用”等。通常，后一个名称实际上有一个前缀来否定前一个名称：“可见”和“不可见”、“已连接”和“未连接”、“零”和“非零”。
+
+​	大多数布尔名称在概念上具有“肯定”和“否定”形式，其中前者感觉像是基本概念，而后者是否定——“打开”和“关闭”、“启用”和“禁用”等。通常，后一个名称实际上有一个前缀来否定前一个名称：“可见”和“不可见”、“已连接”和“未连接”、“零”和“非零”。
 
 When choosing which of the two cases that `true` represents—and thus which case the property is named for—prefer the positive or more fundamental one. Boolean members are often nested inside logical expressions, including negation operators. If your property itself reads like a negation, it’s harder for the reader to mentally perform the double negation and understand what the code means.
-在选择 `true` 表示的两个情况中的哪一个时——因此选择属性的名称——优先选择积极或更基本的情况。布尔成员通常嵌套在逻辑表达式中，包括否定运算符。如果您的属性本身读起来像否定，那么读者就更难在心理上执行双重否定并理解代码的含义。
+
+​	在选择 `true` 表示的两个情况中的哪一个时——因此选择属性的名称——优先选择积极或更基本的情况。布尔成员通常嵌套在逻辑表达式中，包括否定运算符。如果您的属性本身读起来像否定，那么读者就更难在心理上执行双重否定并理解代码的含义。
 
 ```dart
 if (socket.isConnected && database.hasData) {
@@ -183,10 +197,12 @@ if (!socket.isDisconnected && !database.isEmpty) {
 ```
 
 For some properties, there is no obvious positive form. Is a document that has been flushed to disk “saved” or “*un*-changed”? Is a document that *hasn’t* been flushed “*un*-saved” or “changed”? In ambiguous cases, lean towards the choice that is less likely to be negated by users or has the shorter name.
-对于某些属性，没有明显的肯定形式。已刷新到磁盘的文档是“已保存”还是“未更改”？尚未刷新的文档是“未保存”还是“已更改”？在模棱两可的情况下，倾向于不太可能被用户否定的选择或名称较短的选择。
+
+​	对于某些属性，没有明显的肯定形式。已刷新到磁盘的文档是“已保存”还是“未更改”？尚未刷新的文档是“未保存”还是“已更改”？在模棱两可的情况下，倾向于不太可能被用户否定的选择或名称较短的选择。
 
 **Exception:** With some properties, the negative form is what users overwhelmingly need to use. Choosing the positive case would force them to negate the property with `!` everywhere. Instead, it may be better to use the negative case for that property.
-异常：对于某些属性，用户压倒性地需要使用否定形式。选择肯定情况会迫使他们在任何地方用 `!` 否定该属性。相反，最好对该属性使用否定情况。
+
+​	异常：对于某些属性，用户压倒性地需要使用否定形式。选择肯定情况会迫使他们在任何地方用 `!` 否定该属性。相反，最好对该属性使用否定情况。
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect 对于主要目的是产生副作用的函数或方法，
 
@@ -203,15 +219,18 @@ window.refresh();
 ```
 
 This way, an invocation reads like a command to do that work.
-这些类型的成员应使用命令式动词短语命名，以阐明成员执行的工作。
+
+​	这些类型的成员应使用命令式动词短语命名，以阐明成员执行的工作。
 
 ### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose 如果函数或方法的主要目的是返回值，则首选名词短语或非命令式动词短语
 
 Other callable members have few side effects but return a useful result to the caller. If the member needs no parameters to do that, it should generally be a getter. But sometimes a logical “property” needs some parameters. For example, `elementAt()` returns a piece of data from a collection, but it needs a parameter to know *which* piece of data to return.
-其他可调用成员几乎没有副作用，但会向调用者返回一个有用的结果。如果成员不需要任何参数即可执行此操作，则它通常应该是一个 getter。但有时一个逻辑“属性”需要一些参数。例如， `elementAt()` 从集合中返回一个数据块，但它需要一个参数来了解要返回哪个数据块。
+
+​	其他可调用成员几乎没有副作用，但会向调用者返回一个有用的结果。如果成员不需要任何参数即可执行此操作，则它通常应该是一个 getter。但有时一个逻辑“属性”需要一些参数。例如， `elementAt()` 从集合中返回一个数据块，但它需要一个参数来了解要返回哪个数据块。
 
 This means the member is *syntactically* a method, but *conceptually* it is a property, and should be named as such using a phrase that describes *what* the member returns.
-这意味着该成员在语法上是一个方法，但在概念上它是一个属性，并且应该使用描述该成员返回内容的短语将其命名为属性。
+
+​	这意味着该成员在语法上是一个方法，但在概念上它是一个属性，并且应该使用描述该成员返回内容的短语将其命名为属性。
 
 ```dart
 var element = list.elementAt(3);
@@ -220,12 +239,14 @@ var char = string.codeUnitAt(4);
 ```
 
 This guideline is deliberately softer than the previous one. Sometimes a method has no side effects but is still simpler to name with a verb phrase like `list.take()` or `string.split()`.
-此准则故意比前一个准则宽松。有时，一个方法没有副作用，但仍然可以使用动词短语（如 `list.take()` 或 `string.split()` ）更简单地命名。
+
+​	此准则故意比前一个准则宽松。有时，一个方法没有副作用，但仍然可以使用动词短语（如 `list.take()` 或 `string.split()` ）更简单地命名。
 
 ### CONSIDER an imperative verb phrase for a function or method if you want to draw attention to the work it performs 如果要强调函数或方法执行的工作，请考虑使用命令式动词短语
 
 When a member produces a result without any side effects, it should usually be a getter or a method with a noun phrase name describing the result it returns. However, sometimes the work required to produce that result is important. It may be prone to runtime failures, or use heavyweight resources like networking or file I/O. In cases like this, where you want the caller to think about the work the member is doing, give the member a verb phrase name that describes that work.
-当成员产生结果且没有任何副作用时，它通常应为 getter 或使用名词短语名称描述其返回结果的方法。但是，有时产生该结果所需的工作很重要。它可能容易出现运行时故障，或使用网络或文件 I/O 等重量级资源。在这种情况下，您希望调用方考虑成员正在执行的工作，请为该成员指定描述该工作的动词短语名称。
+
+​	当成员产生结果且没有任何副作用时，它通常应为 getter 或使用名词短语名称描述其返回结果的方法。但是，有时产生该结果所需的工作很重要。它可能容易出现运行时故障，或使用网络或文件 I/O 等重量级资源。在这种情况下，您希望调用方考虑成员正在执行的工作，请为该成员指定描述该工作的动词短语名称。
 
 ```dart
 var table = database.downloadData();
@@ -233,31 +254,37 @@ var packageVersions = packageGraph.solveConstraints();
 ```
 
 Note, though, that this guideline is softer than the previous two. The work an operation performs is often an implementation detail that isn’t relevant to the caller, and performance and robustness boundaries change over time. Most of the time, name your members based on *what* they do for the caller, not *how* they do it.
-注意，尽管如此，此准则比前两个准则更宽松。操作执行的工作通常是与调用者无关的实现细节，性能和健壮性边界会随着时间而改变。大多数情况下，根据成员对调用者的作用来命名成员，而不是根据成员的执行方式来命名。
+
+​	注意，尽管如此，此准则比前两个准则更宽松。操作执行的工作通常是与调用者无关的实现细节，性能和健壮性边界会随着时间而改变。大多数情况下，根据成员对调用者的作用来命名成员，而不是根据成员的执行方式来命名。
 
 ### AVOID starting a method name with `get` 避免以 `get` 开头的方法名称。
 
 In most cases, the method should be a getter with `get` removed from the name. For example, instead of a method named `getBreakfastOrder()`, define a getter named `breakfastOrder`.
-在大多数情况下，方法应为 getter，且名称中已删除 `get` 。例如，不要定义名为 `getBreakfastOrder()` 的方法，而应定义名为 `breakfastOrder` 的 getter。
+
+​	在大多数情况下，方法应为 getter，且名称中已删除 `get` 。例如，不要定义名为 `getBreakfastOrder()` 的方法，而应定义名为 `breakfastOrder` 的 getter。
 
 Even if the member does need to be a method because it takes arguments or otherwise isn’t a good fit for a getter, you should still avoid `get`. Like the previous guidelines state, either:
-即使成员确实需要成为方法，因为它带参数或不适合 getter，您仍应避免使用 `get` 。如前述准则所述，请执行以下操作之一：
+
+​	即使成员确实需要成为方法，因为它带参数或不适合 getter，您仍应避免使用 `get` 。如前述准则所述，请执行以下操作之一：
 
 - Simply drop `get` and [use a noun phrase name](https://dart.dev/effective-dart/design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose) like `breakfastOrder()` if the caller mostly cares about the value the method returns.
-  如果调用者主要关心方法返回的值，则只需删除 `get` 并使用名词短语名称，如 `breakfastOrder()` 。
+- 如果调用者主要关心方法返回的值，则只需删除 `get` 并使用名词短语名称，如 `breakfastOrder()` 。
 - [Use a verb phrase name](https://dart.dev/effective-dart/design#consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs) if the caller cares about the work being done, but pick a verb that more precisely describes the work than `get`, like `create`, `download`, `fetch`, `calculate`, `request`, `aggregate`, etc.
-  如果调用者关心所执行的工作，则使用动词短语名称，但选择比 `get` 更准确地描述该工作的动词，如 `create` 、 `download` 、 `fetch` 、 `calculate` 、 `request` 、 `aggregate` 等。
+- 如果调用者关心所执行的工作，则使用动词短语名称，但选择比 `get` 更准确地描述该工作的动词，如 `create` 、 `download` 、 `fetch` 、 `calculate` 、 `request` 、 `aggregate` 等。
 
 ### PREFER naming a method `to___()` if it copies the object’s state to a new object 如果方法将对象的 state 复制到新对象，则优先命名方法 `to___()`
 
 Linter rule: [use_to_and_as_if_applicable](https://dart.dev/tools/linter-rules/use_to_and_as_if_applicable)
-Linter 规则：use_to_and_as_if_applicable
+
+​	Linter 规则：use_to_and_as_if_applicable
 
 A *conversion* method is one that returns a new object containing a copy of almost all of the state of the receiver but usually in some different form or representation. The core libraries have a convention that these methods are named starting with `to` followed by the kind of result.
-转换方法是一种返回新对象的方法，该对象包含接收器几乎所有状态的副本，但通常采用某种不同的形式或表示形式。核心库有一个约定，这些方法的命名以 `to` 开头，后跟结果的类型。
+
+​	转换方法是一种返回新对象的方法，该对象包含接收器几乎所有状态的副本，但通常采用某种不同的形式或表示形式。核心库有一个约定，这些方法的命名以 `to` 开头，后跟结果的类型。
 
 If you define a conversion method, it’s helpful to follow that convention.
-如果您定义转换方法，遵循该约定会有所帮助。
+
+​	如果您定义转换方法，遵循该约定会有所帮助。
 
 ```dart
 list.toSet();
@@ -268,13 +295,16 @@ dateTime.toLocal();
 ### PREFER naming a method `as___()` if it returns a different representation backed by the original object 如果方法返回由原始对象支持的不同表示形式，则最好将其命名为 `as___()`
 
 Linter rule: [use_to_and_as_if_applicable](https://dart.dev/tools/linter-rules/use_to_and_as_if_applicable)
-Linter 规则：use_to_and_as_if_applicable
+
+​	Linter 规则：use_to_and_as_if_applicable
 
 Conversion methods are “snapshots”. The resulting object has its own copy of the original object’s state. There are other conversion-like methods that return *views*—they provide a new object, but that object refers back to the original. Later changes to the original object are reflected in the view.
-转换方法是“快照”。结果对象具有原始对象状态的副本。还有其他类似转换的方法返回视图——它们提供一个新对象，但该对象引用回原始对象。对原始对象的后续更改会反映在视图中。
+
+​	转换方法是“快照”。结果对象具有原始对象状态的副本。还有其他类似转换的方法返回视图——它们提供一个新对象，但该对象引用回原始对象。对原始对象的后续更改会反映在视图中。
 
 The core library convention for you to follow is `as___()`.
-您要遵循的核心库约定是 `as___()` 。
+
+​	您要遵循的核心库约定是 `as___()` 。
 
 ```dart
 var map = table.asMap();
@@ -285,7 +315,8 @@ var future = subscription.asFuture();
 ### AVOID describing the parameters in the function’s or method’s name 避免在函数或方法的名称中描述参数
 
 The user will see the argument at the call site, so it usually doesn’t help readability to also refer to it in the name itself.
-用户将在调用站点看到参数，因此通常不必在名称本身中引用它来提高可读性。
+
+​	用户将在调用站点看到参数，因此通常不必在名称本身中引用它来提高可读性。
 
 ```dart
 list.add(element);
@@ -295,7 +326,8 @@ map.removeKey(key)
 ```
 
 However, it can be useful to mention a parameter to disambiguate it from other similarly-named methods that take different types:
-但是，提及参数以将其与采用不同类型的其他同名方法区分开来可能很有用：
+
+​	但是，提及参数以将其与采用不同类型的其他同名方法区分开来可能很有用：
 
 ```dart
 map.containsKey(key);
@@ -367,7 +399,7 @@ class Graph<Node, Edge> {
 In practice, the existing conventions cover most type parameters.
 实际上，现有约定涵盖了大多数类型参数。
 
-## Libraries 库
+## 库 Libraries 
 
 A leading underscore character ( `_` ) indicates that a member is private to its library. This is not mere convention, but is built into the language itself.
 前导下划线字符 ( `_` ) 表示成员对其库是私有的。这不是简单的约定，而是内置于语言本身。
@@ -391,7 +423,7 @@ Placing multiple classes together in one library can enable some useful patterns
 Of course, this guideline doesn’t mean you *should* put all of your classes into a huge monolithic library, just that you are allowed to place more than one class in a single library.
 当然，此准则并不意味着您应该将所有类都放入一个巨大的单一库中，只是允许您将多个类放在一个库中。
 
-## Classes and mixins 类和 mixin
+## Classes 和 mixins
 
 Dart is a “pure” object-oriented language in that all objects are instances of classes. But Dart does not require all code to be defined inside a class—you can define top-level variables, constants, and functions like you can in a procedural or functional language.
 Dart 是一种“纯”面向对象语言，因为所有对象都是类的实例。但 Dart 不要求所有代码都在类中定义——您可以像在过程式或函数式语言中一样定义顶级变量、常量和函数。
@@ -511,7 +543,7 @@ Types that need to be both a mixin and a class should be a rare case, however. T
 Read [Migrating classes as mixins](https://dart.dev/language/class-modifiers-for-apis#migrating-classes-as-mixins) for more guidance on `mixin` and `mixin class` declarations.
 阅读将类作为 mixin 迁移以获取有关 `mixin` 和 `mixin class` 声明的更多指导。
 
-## Constructors 构造函数
+## 构造函数 Constructors 
 
 Dart constructors are created by declaring a function with the same name as the class and, optionally, an additional identifier. The latter are called *named constructors*.
 Dart 构造函数是通过声明一个与类同名的函数（以及一个可选的附加标识符）创建的。后者称为命名构造函数。
@@ -527,7 +559,7 @@ If you don’t explicitly make it `const`, they aren’t able to do that.
 Note, however, that a `const` constructor is a commitment in your public API. If you later change the constructor to non-`const`, it will break users that are calling it in constant expressions. If you don’t want to commit to that, don’t make it `const`. In practice, `const` constructors are most useful for simple, immutable value-like types.
 但是，请注意， `const` 构造函数是您公开 API 中的承诺。如果您稍后将构造函数更改为非 `const` ，那么在常量表达式中调用该构造函数的用户将会遇到问题。如果您不想做出此承诺，请不要将其设为 `const` 。实际上， `const` 构造函数最适用于简单的、不可变的值类型。
 
-## Members 成员
+## 成员 Members 
 
 A member belongs to an object and can be either methods or instance variables.
 成员属于某个对象，可以是方法或实例变量。
@@ -700,7 +732,7 @@ var buffer = StringBuffer()
     .write('three');
 ```
 
-## Types 类型
+## 类型 Types 
 
 When you write down a type in your program, you constrain the kinds of values that flow into different parts of your code. Types can appear in two kinds of places: *type annotations* on declarations and type arguments to *generic invocations*.
 在程序中写下类型时，您会限制流入代码不同部分的值的种类。类型可以出现在两种位置：声明上的类型注释和泛型调用中的类型参数。
@@ -734,7 +766,7 @@ List<int> ints = [1, 2];
 Here, `int` is a type argument, but it appears inside a type annotation, not a generic invocation. You usually don’t need to worry about this distinction, but in a couple of places, we have different guidance for when a type is used in a generic invocation as opposed to a type annotation.
 此处， `int` 是一个类型参数，但它出现在类型注释中，而不是泛型调用中。您通常不必担心这种区别，但在某些地方，我们对在泛型调用中使用类型与在类型注释中使用类型的情况有不同的指导。
 
-#### Type inference 类型推断
+### 类型推断 Type inference 
 
 Type annotations are optional in Dart. If you omit one, Dart tries to infer a type based on the nearby context. Sometimes it doesn’t have enough information to infer a complete type. When that happens, Dart sometimes reports an error, but usually silently fills in any missing parts with `dynamic`. The implicit `dynamic` leads to code that *looks* inferred and safe, but actually disables type checking completely. The rules below avoid that by requiring types when inference fails.
 在 Dart 中，类型注释是可选的。如果您省略一个，Dart 会尝试根据附近的上下文推断一个类型。有时它没有足够的信息来推断一个完整的类型。发生这种情况时，Dart 有时会报告错误，但通常会用 `dynamic` 静默地填充任何缺失的部分。隐式的 `dynamic` 会导致代码看起来像是推断出来的并且是安全的，但实际上完全禁用了类型检查。以下规则通过在推断失败时要求类型来避免这种情况。
@@ -1280,7 +1312,7 @@ Stream<S> asyncMap<T, S>(
 }
 ```
 
-## Parameters 参数
+## 参数 Parameters 
 
 In Dart, optional parameters can be either positional or named, but not both.
 在 Dart 中，可选参数可以是位置参数或命名参数，但不能同时是两者。
@@ -1347,10 +1379,12 @@ Duration(
 ### AVOID mandatory parameters that accept a special “no argument” value 避免接受特殊“无参数”值的强制参数
 
 If the user is logically omitting a parameter, prefer letting them actually omit it by making the parameter optional instead of forcing them to pass `null`, an empty string, or some other special value that means “did not pass”.
-如果用户在逻辑上省略了一个参数，最好让他们实际省略它，方法是使参数可选，而不是强迫他们传递 `null` 、空字符串或其他表示“未传递”的特殊值。
+
+​	如果用户在逻辑上省略了一个参数，最好让他们实际省略它，方法是使参数可选，而不是强迫他们传递 `null` 、空字符串或其他表示“未传递”的特殊值。
 
 Omitting the parameter is more terse and helps prevent bugs where a sentinel value like `null` is accidentally passed when the user thought they were providing a real value.
-省略参数更加简洁，并有助于防止错误，例如在用户认为他们提供了真实值时意外传递了哨兵值 `null` 。
+
+​	省略参数更加简洁，并有助于防止错误，例如在用户认为他们提供了真实值时意外传递了哨兵值 `null` 。
 
 ```dart
 var rest = string.substring(start);
@@ -1373,7 +1407,7 @@ This is consistent with core libraries that do the same thing.
 It’s particularly important to be consistent here because these parameters are usually unnamed. If your API takes a length instead of an end point, the difference won’t be visible at all at the call site.
 在这里保持一致性尤其重要，因为这些参数通常没有命名。如果您的 API 采用长度而不是结束点，那么在调用站点根本看不到差异。
 
-## Equality 相等
+## 相等 Equality 
 
 Implementing custom equality behavior for a class can be tricky. Users have deep intuition about how equality works that your objects need to match, and collection types like hash tables have subtle contracts that they expect elements to follow.
 为类实现自定义相等性行为可能很棘手。用户对相等性如何发挥作用有深刻的直觉，您的对象需要与之匹配，并且哈希表等集合类型具有微妙的契约，它们期望元素遵循这些契约。

@@ -25,19 +25,20 @@ Dart supports the operators shown in the following table. The table shows Dart�
 | shift 移位                              | `<<`  `>>`  `>>>`                                            | Left 左              |
 | bitwise AND 按位与                      | `&`                                                          | Left 左              |
 | bitwise XOR 按位异或                    | `^`                                                          | Left 左              |
-| bitwise OR 按位或                       | `|`                                                          | Left 左              |
+| bitwise OR 按位或                       | `\|`                                                         | Left 左              |
 | relational and type test 关系和类型测试 | `>=`  `>`  `<=`  `<`  `as`  `is`  `is!`                      | None 无              |
 | equality 相等                           | `==`  `!=`                                                   | None 无              |
 | logical AND 逻辑与                      | `&&`                                                         | Left 左              |
-| logical OR 逻辑或                       | `||`                                                         | Left 左              |
+| logical OR 逻辑或                       | `\|\|`                                                       | Left 左              |
 | if null 如果为空                        | `??`                                                         | Left 左              |
 | conditional 条件                        | `expr1 ? expr2 : expr3`                                      | Right 右             |
 | cascade 级联                            | `..`  `?..`                                                  | Left 左              |
-| assignment 作业                         | `=`  `*=`  `/=`  `+=`  `-=`  `&=`  `^=`  *etc.* `=` `*=` `/=` `+=` `-=` `&=` `^=` 等 | Right 右             |
+| assignment 作业                         | `=`  `*=`  `/=`  `+=`  `-=`  `&=`  `^=`  *etc.*              | Right 右             |
 
-*report_problem* **Warning:** The previous table should only be used as a helpful guide. The notion of operator precedence and associativity is an approximation of the truth found in the language grammar. You can find the authoritative behavior of Dart’s operator relationships in the grammar defined in the [Dart language specification](https://dart.dev/guides/language/spec).
-
-​	警告：前表仅应作为有用的指南。运算符优先级和结合性的概念是对语言语法中发现的真理的近似。您可以在 Dart 语言规范中定义的语法中找到 Dart 的运算符关系的权威行为。
+> **Warning:** The previous table should only be used as a helpful guide. The notion of operator precedence and associativity is an approximation of the truth found in the language grammar. You can find the authoritative behavior of Dart’s operator relationships in the grammar defined in the [Dart language specification](https://dart.dev/guides/language/spec).
+>
+> ​	警告：前表仅应作为有用的指南。运算符优先级和结合性的概念是对语言语法中发现的真理的近似。您可以在 Dart 语言规范中定义的语法中找到 Dart 的运算符关系的权威行为。
+>
 
 When you use operators, you create expressions. Here are some examples of operator expressions:
 
@@ -66,9 +67,10 @@ if ((n % i == 0) && (d % i == 0)) ...
 if (n % i == 0 && d % i == 0) ...
 ```
 
-*report_problem* **Warning:** For operators that take two operands, the leftmost operand determines which method is used. For example, if you have a `Vector` object and a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
-
-​	警告：对于采用两个操作数的运算符，最左边的操作数决定使用哪种方法。例如，如果您有一个 `Vector` 对象和一个 `Point` 对象，则 `aVector + aPoint` 使用 `Vector` 加法（ `+` ）。
+> **Warning:** For operators that take two operands, the leftmost operand determines which method is used. For example, if you have a `Vector` object and a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
+>
+> ​	警告：对于采用两个操作数的运算符，最左边的操作数决定使用哪种方法。例如，如果您有一个 `Vector` 对象和一个 `Point` 对象，则 `aVector + aPoint` 使用 `Vector` 加法（ `+` ）。
+>
 
 ## 算术运算符 Arithmetic operators 
 
@@ -230,10 +232,10 @@ Compound assignment operators such as `+=` combine an operation with an assignme
 
 ​	诸如 `+=` 的复合赋值运算符将运算与赋值结合在一起。
 
-| `=`  | `*=`  | `%=`  | `>>>=` | `^=` |
-| ---- | ----- | ----- | ------ | ---- |
-| `+=` | `/=`  | `<<=` | `&=`   | `|=` |
-| `-=` | `~/=` | `>>=` |        |      |
+| `=`  | `*=`  | `%=`  | `>>>=` | `^=`  |
+| ---- | ----- | ----- | ------ | ----- |
+| `+=` | `/=`  | `<<=` | `&=`   | `\|=` |
+| `-=` | `~/=` | `>>=` |        |       |
 
 Here’s how compound assignment operators work:
 
@@ -263,11 +265,12 @@ You can invert or combine boolean expressions using the logical operators.
 | Operator 运算符 | Meaning 含义                                                 |
 | --------------- | ------------------------------------------------------------ |
 | `!expr`         | inverts the following expression (changes false to true, and vice versa) 反转以下表达式（将 false 更改为 true，反之亦然） |
-| `||`            | logical OR 逻辑 OR                                           |
+| `\|\|`          | logical OR 逻辑 OR                                           |
 | `&&`            | logical AND 逻辑 AND                                         |
 
 Here’s an example of using the logical operators:
-以下是使用逻辑运算符的示例：
+
+​	以下是使用逻辑运算符的示例：
 
 ```dart
 if (!done && (col == 0 || col == 3)) {
@@ -284,7 +287,7 @@ You can manipulate the individual bits of numbers in Dart. Usually, you’d use 
 | Operator 运算符 | Meaning 含义                                                 |
 | --------------- | ------------------------------------------------------------ |
 | `&`             | AND                                                          |
-| `|`             | OR                                                           |
+| `\|`            | `OR`                                                         |
 | `^`             | XOR                                                          |
 | `~expr`         | Unary bitwise complement (0s become 1s; 1s become 0s) 一元按位补码（0 变为 1；1 变为 0） |
 | `<<`            | Shift left 左移                                              |
@@ -293,7 +296,7 @@ You can manipulate the individual bits of numbers in Dart. Usually, you’d use 
 
 *info* **Note:** The behavior of bitwise operations with large or negative operands might differ between platforms. To learn more, check out [Bitwise operations platform differences](https://dart.dev/guides/language/numbers#bitwise-operations).
 
-​	注意：按位运算与大操作数或负操作数的行为可能因平台而异。要了解更多信息，请查看按位运算平台差异。
+​	注意：按位运算与大操作数或负操作数的行为可能因平台而异。要了解更多信息，请查看[按位运算平台差异]({{< ref "/Development/Numberrepresentation#按位运算-bitwise-operations">}})。
 
 Here’s an example of using bitwise and shift operators:
 

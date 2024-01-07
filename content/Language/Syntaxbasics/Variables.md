@@ -42,7 +42,7 @@ String name = 'Bob';
 
 *info* **Note:** This page follows the [style guide recommendation](https://dart.dev/effective-dart/design#types) of using `var`, rather than type annotations, for local variables.
 
-​	注意：此页面遵循使用 `var` 而不是类型注释作为局部变量的样式指南建议。
+​	注意：此页面遵循使用 `var` 而不是类型注释作为局部变量的[样式指南建议]({{< ref "/EffectiveDart/Design#类型-types">}})。
 
 ## 空安全 Null safety 
 
@@ -164,9 +164,10 @@ void main() {
 }
 ```
 
-*report_problem* If you fail to initialize a `late` variable, a runtime error occurs when the variable is used.
-
-​	如果您未能初始化 `late` 变量，则在使用该变量时会发生运行时错误。
+> If you fail to initialize a `late` variable, a runtime error occurs when the variable is used.
+>
+> ​	如果您未能初始化 `late` 变量，则在使用该变量时会发生运行时错误。
+>
 
 When you mark a variable as `late` but initialize it at its declaration, then the initializer runs the first time the variable is used. This lazy initialization is handy in a couple of cases:
 
