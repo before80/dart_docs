@@ -82,7 +82,7 @@ Null safety introduces three key changes:
 
 Sound null safety changes potential **runtime errors** into **edit-time** analysis errors. Null safety flags a non-null variable when it has been either:
 
-​	声音空安全将潜在的运行时错误更改为编辑时分析错误。空安全在以下情况将非空变量标记为非空：
+​	健全的空安全将潜在的运行时错误更改为编辑时分析错误。空安全在以下情况将非空变量标记为非空：
 
 - Not initialized with a non-null value.
 - 未用非空值初始化。

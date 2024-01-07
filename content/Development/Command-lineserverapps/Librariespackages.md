@@ -14,30 +14,38 @@ draft = false
 ## Command-line and server libraries and packages 命令行和服务器库和包
 
 The [Dart SDK](https://dart.dev/tools/sdk) contains [dart:io](https://api.dart.dev/stable/dart-io/dart-io-library.html) and other libraries that provide low-level command-line & server APIs.
-Dart SDK 包含 dart:io 和其他提供低级命令行和服务器 API 的库。
 
-## SDK libraries SDK 库
+​	Dart SDK 包含 dart:io 和其他提供低级命令行和服务器 API 的库。
+
+## SDK 库 SDK libraries 
 
 The Dart SDK contains dart:io and other libraries that provide low-level web APIs.
-Dart SDK 包含 dart:io 和其他提供低级 Web API 的库。
+
+​	Dart SDK 包含 dart:io 和其他提供低级 Web API 的库。
 
 - [The dart:io documentation dart:io 文档](https://dart.dev/libraries/dart-io)
 
-  An example-driven tour of using the dart:io library. Topics include working with files & directories, and making & handling HTTP requests. 使用 dart:io 库的示例驱动之旅。主题包括使用文件和目录，以及发出和处理 HTTP 请求。
+  An example-driven tour of using the dart:io library. Topics include working with files & directories, and making & handling HTTP requests. 
 
-- [dart:io API reference dart:io API 参考](https://api.dart.dev/stable/dart-io/dart-io-library.html)
+  使用 dart:io 库的示例驱动之旅。主题包括使用文件和目录，以及发出和处理 HTTP 请求。
 
-  Complete reference documentation for the dart:io library. dart:io 库的完整参考文档。
+- [dart:io API reference ](https://api.dart.dev/stable/dart-io/dart-io-library.html)
 
-## Community packages 社区包
+  Complete reference documentation for the dart:io library. 
+  
+  dart:io 库的完整参考文档。
+
+## 社区包 Community packages 
 
 The [pub.dev site](https://pub.dev/) allows you to search for packages that support command-line and server apps by specifying the platforms your app needs to support. You can also search for words that describe the functionality you need.
-pub.dev 网站允许您通过指定您的应用需要支持的平台来搜索支持命令行和服务器应用的包。您还可以搜索描述您所需功能的字词。
 
-### Command-line packages 命令行包
+​	pub.dev 网站允许您通过指定您的应用需要支持的平台来搜索支持命令行和服务器应用的包。您还可以搜索描述您所需功能的字词。
+
+### 命令行包 Command-line packages 
 
 Command-line apps often use the following packages, in addition to [general-purpose packages](https://dart.dev/guides/libraries/useful-libraries#general-purpose-packages) such as `archive`, `intl`, and `yaml`:
-除了 `archive` 、 `intl` 和 `yaml` 等通用包之外，命令行应用通常使用以下包：
+
+​	除了 `archive` 、 `intl` 和 `yaml` 等通用包之外，命令行应用通常使用以下包：
 
 | **Package 包**                                    | **Description 说明**                                         |
 | ------------------------------------------------- | ------------------------------------------------------------ |
@@ -47,10 +55,11 @@ Command-line apps often use the following packages, in addition to [general-purp
 | [path](https://pub.dev/packages/path)             | Provides comprehensive, cross-platform operations for manipulating paths. 提供全面的跨平台操作来处理路径。 |
 | [usage](https://pub.dev/packages/usage)           | Wraps Google Analytics. 封装 Google Analytics。              |
 
-### Server packages 服务器包
+### 服务器包 Server packages 
 
 Server apps can choose from many packages, in addition to the packages listed in the previous table and [general-purpose packages](https://dart.dev/guides/libraries/useful-libraries#general-purpose-packages) such as `logging`:
-除了前表中列出的包和 `logging` 等通用包之外，服务器应用还可以选择许多包：
+
+​	除了前表中列出的包和 `logging` 等通用包之外，服务器应用还可以选择许多包：
 
 | **Package 包**                                  | **Description 说明**                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |

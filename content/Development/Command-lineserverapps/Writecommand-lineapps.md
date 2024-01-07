@@ -12,34 +12,38 @@ draft = false
 
 ## Write command-line apps 编写命令行应用
 
-#### What's the point? 有什么意义？
+#### 有什么意义？ What's the point? 
 
 - Command-line applications need to do input and output.
-  命令行应用程序需要进行输入和输出。
+- 命令行应用程序需要进行输入和输出。
 - The `dart:io` library provides I/O functionality.
-  `dart:io` 库提供 I/O 功能。
+- `dart:io` 库提供 I/O 功能。
 - The args package helps define and parse command-line arguments.
-  args 包有助于定义和解析命令行参数。
+- args 包有助于定义和解析命令行参数。
 - A `Future` object represents a value that will be available at some time in the future.
-  `Future` 对象表示将来某个时间可用的值。
+- `Future` 对象表示将来某个时间可用的值。
 - Streams provide a series of asynchronous data events.
-  流提供一系列异步数据事件。
+- 流提供一系列异步数据事件。
 - Most input and output requires the use of streams.
-  大多数输入和输出都需要使用流。
+- 大多数输入和输出都需要使用流。
 
 *info* **Note:** This tutorial uses the `async` and `await` language features, which rely on the [`Future`](https://api.dart.dev/stable/dart-async/Future-class.html) and [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html) classes for asynchronous support. To learn more about these features, see the [asynchronous programming codelab](https://dart.dev/codelabs/async-await) and the [streams tutorial](https://dart.dev/tutorials/language/streams).
-注意：本教程使用 `async` 和 `await` 语言功能，这些功能依赖于 `Future` 和 `Stream` 类来提供异步支持。要详细了解这些功能，请参阅异步编程代码实验室和流教程。
+
+​	注意：本教程使用 `async` 和 `await` 语言功能，这些功能依赖于 `Future` 和 `Stream` 类来提供异步支持。要详细了解这些功能，请参阅异步编程代码实验室和流教程。
 
 This tutorial teaches you how to build command-line apps and shows you a few small command-line applications. These programs use resources that most command-line applications need, including the standard output, error, and input streams, command-line arguments, files and directories, and more.
-本教程将教您如何构建命令行应用，并向您展示一些小型命令行应用程序。这些程序使用大多数命令行应用程序所需的资源，包括标准输出、错误和输入流、命令行参数、文件和目录等。
 
-## Running an app with the standalone Dart VM 使用独立的 Dart VM 运行应用
+​	本教程将教您如何构建命令行应用，并向您展示一些小型命令行应用程序。这些程序使用大多数命令行应用程序所需的资源，包括标准输出、错误和输入流、命令行参数、文件和目录等。
+
+## 使用独立的 Dart VM 运行应用 Running an app with the standalone Dart VM 
 
 To run a command-line app in the Dart VM, use `dart run`. The `dart` commands are included with the [Dart SDK](https://dart.dev/tools/sdk).
-要在 Dart VM 中运行命令行应用，请使用 `dart run` 。 `dart` 命令包含在 Dart SDK 中。
+
+​	要在 Dart VM 中运行命令行应用，请使用 `dart run` 。 `dart` 命令包含在 Dart SDK 中。
 
 *error* **Important:** The location of the SDK installation directory (we’ll call it `<sdk-install-dir>`) depends on your platform and how you installed the SDK. You can find `dart` in `<sdk-install-dir>/bin`. By putting this directory in your PATH you can refer to the `dart` command by name.
-重要提示：SDK 安装目录的位置（我们称之为 `<sdk-install-dir>` ）取决于您的平台以及您安装 SDK 的方式。您可以在 `<sdk-install-dir>/bin` 中找到 `dart` 。通过将此目录放在您的 PATH 中，您可以按名称引用 `dart` 命令。
+
+​	重要提示：SDK 安装目录的位置（我们称之为 `<sdk-install-dir>` ）取决于您的平台以及您安装 SDK 的方式。您可以在 `<sdk-install-dir>/bin` 中找到 `dart` 。通过将此目录放在您的 PATH 中，您可以按名称引用 `dart` 命令。
 
 Let’s run a small program.
 我们来运行一个小程序。
@@ -336,7 +340,8 @@ For example, if you have a path, you can determine whether the path is a file, a
 例如，如果您有路径，则可以使用 `FileSystemEntity` 类中的 `type()` 方法来确定该路径是文件、目录、链接还是未找到。由于 `type()` 方法会访问文件系统，因此它会异步执行检查。
 
 The following code from the `dcat` app uses `FileSystemEntity` to determine if the path provided on the command line is a directory. The returned `Future` completes with a boolean that indicates if the path is a directory or not. Because the check is asynchronous, the code calls `isDirectory()` using `await`.
-来自 `dcat` 应用程序的以下代码使用 `FileSystemEntity` 来确定命令行上提供的路径是否为目录。返回的 `Future` 使用布尔值完成，该布尔值指示路径是否为目录。由于检查是异步的，因此代码使用 `await` 调用 `isDirectory()` 。`dcat` 类中的其他有趣方法包括 `FileSystemEntity` 、 `Future` 、 `isDirectory()` 、 `await` 和 ，所有这些方法也使用 返回值。
+
+​	来自 `dcat` 应用程序的以下代码使用 `FileSystemEntity` 来确定命令行上提供的路径是否为目录。返回的 `Future` 使用布尔值完成，该布尔值指示路径是否为目录。由于检查是异步的，因此代码使用 `await` 调用 `isDirectory()` 。
 
 ```dart
 if (await FileSystemEntity.isDirectory(path)) {
@@ -348,13 +353,17 @@ if (await FileSystemEntity.isDirectory(path)) {
 
 Other interesting methods in the `FileSystemEntity` class include `isFile()`, `exists()`, `stat()`, `delete()`, and `rename()`, all of which also use a `Future` to return a value.
 
-`FileSystemEntity` is the superclass for the `File`, `Directory`, and `Link` classes.
-`FileSystemEntity` 是 `File` 、 `Directory` 和 `Link` 类的超类。
+`dcat` 类中的其他有趣方法包括 `FileSystemEntity` 、 `Future` 、 `isDirectory()` 、 `await` 和 ，所有这些方法也使用 返回值。
 
-## Reading a file 读取文件
+`FileSystemEntity` is the superclass for the `File`, `Directory`, and `Link` classes.
+
+​	`FileSystemEntity` 是 `File` 、 `Directory` 和 `Link` 类的超类。
+
+## 读取文件 Reading a file 
 
 The `dcat` apps opens each file listed on the command line with the `openRead()` method, which returns a `Stream`. The `await for` block waits for the file to be read and decoded asynchronously. When the data becomes available on the stream, the app prints it to stdout.
-该 `dcat` 应用使用 `openRead()` 方法打开命令行中列出的每个文件，该方法会返回一个 `Stream` 。 `await for` 块等待文件以异步方式读取和解码。当数据在流中可用时，该应用会将其打印到 stdout。
+
+​	该 `dcat` 应用使用 `openRead()` 方法打开命令行中列出的每个文件，该方法会返回一个 `Stream` 。 `await for` 块等待文件以异步方式读取和解码。当数据在流中可用时，该应用会将其打印到 stdout。
 
 ```dart
 for (final path in paths) {
@@ -376,7 +385,8 @@ for (final path in paths) {
 ```
 
 The following highlights the rest of the code, which uses two decoders that transform the data before making it available in the `await for` block. The UTF8 decoder converts the data into Dart strings. `LineSplitter` splits the data at newlines.
-以下突出显示了其余代码，该代码使用两个解码器在 `await for` 块中提供数据之前对数据进行转换。UTF8 解码器将数据转换为 Dart 字符串。 `LineSplitter` 在换行符处拆分数据。
+
+​	以下突出显示了其余代码，该代码使用两个解码器在 `await for` 块中提供数据之前对数据进行转换。UTF8 解码器将数据转换为 Dart 字符串。 `LineSplitter` 在换行符处拆分数据。
 
 ```dart
 for (final path in paths) {
@@ -398,16 +408,18 @@ for (final path in paths) {
 ```
 
 The `dart:convert` library provides these and other data converters, including one for JSON. To use these converters you need to import the `dart:convert` library:
-库提供这些和其他数据转换器，包括一个用于 JSON 的转换器。要使用这些转换器，您需要导入库：
+
+​	库提供这些和其他数据转换器，包括一个用于 JSON 的转换器。要使用这些转换器，您需要导入库：
 
 ```dart
 import 'dart:convert';
 ```
 
-## Writing to a file 写入文件
+## 写入文件 Writing to a file 
 
 The easiest way to write text to a file is to create a [`File`](https://api.dart.dev/stable/dart-io/File-class.html) object and use the `writeAsString()` method:
-将文本写入文件的最简单方法是创建一个 `File` 对象并使用 `writeAsString()` 方法：
+
+​	将文本写入文件的最简单方法是创建一个 `File` 对象并使用 `writeAsString()` 方法：
 
 ```dart
 final quotes = File('quotes.txt');
@@ -417,10 +429,12 @@ await quotes.writeAsString(stronger, mode: FileMode.append);
 ```
 
 The `writeAsString()` method writes the data asynchronously. It opens the file before writing and closes the file when done. To append data to an existing file, you can use the optional named parameter `mode` and set its value to `FileMode.append`. Otherwise, the mode defaults to `FileMode.write` and the previous contents of the file, if any, are overwritten.
-`writeAsString()` 方法异步写入数据。它在写入之前打开文件，并在完成后关闭文件。要将数据追加到现有文件，可以使用可选的命名参数 `mode` 并将其值设置为 `FileMode.append` 。否则，模式默认为 `FileMode.write` ，并且文件的先前内容（如果有）将被覆盖。
+
+​	`writeAsString()` 方法异步写入数据。它在写入之前打开文件，并在完成后关闭文件。要将数据追加到现有文件，可以使用可选的命名参数 `mode` 并将其值设置为 `FileMode.append` 。否则，模式默认为 `FileMode.write` ，并且文件的先前内容（如果有）将被覆盖。
 
 If you want to write more data, you can open the file for writing. The `openWrite()` method returns an `IOSink`, which has the same type as stdin and stderr. When using the `IOSink` returned from `openWrite()`, you can continue to write to the file until done, at which time, you must manually close the file. The `close()` method is asynchronous and returns a `Future`.
-如果要写入更多数据，可以打开文件进行写入。 `openWrite()` 方法返回一个 `IOSink` ，其类型与 stdin 和 stderr 相同。在使用从 `openWrite()` 返回的 `IOSink` 时，可以继续将数据写入文件，直到完成，此时必须手动关闭文件。 `close()` 方法是异步的，并返回一个 `Future` 。
+
+​	如果要写入更多数据，可以打开文件进行写入。 `openWrite()` 方法返回一个 `IOSink` ，其类型与 stdin 和 stderr 相同。在使用从 `openWrite()` 返回的 `IOSink` 时，可以继续将数据写入文件，直到完成，此时必须手动关闭文件。 `close()` 方法是异步的，并返回一个 `Future` 。
 
 ```dart
 final quotes = File('quotes.txt').openWrite(mode: FileMode.append);
@@ -430,13 +444,15 @@ quotes.writeln('smile because it happened. -Dr. Seuss');
 await quotes.close();
 ```
 
-## Getting environment information 获取环境信息
+## 获取环境信息 Getting environment information 
 
 Use the [`Platform`](https://api.dart.dev/stable/dart-io/Platform-class.html) class to get information about the machine and operating system that your app is running on.
-使用 `Platform` 类获取有关应用程序正在运行的计算机和操作系统的的信息。
+
+​	使用 `Platform` 类获取有关应用程序正在运行的计算机和操作系统的的信息。
 
 The static [`Platform.environment`](https://api.dart.dev/stable/dart-io/Platform/environment.html) property provides a copy of the environment variables in an immutable map. If you need a mutable map (modifiable copy) you can use `Map.of(Platform.environment)`.
-静态 `Platform.environment` 属性以不可变映射的形式提供环境变量的副本。如果您需要一个可变映射（可修改的副本），可以使用 `Map.of(Platform.environment)` 。
+
+​	静态 `Platform.environment` 属性以不可变映射的形式提供环境变量的副本。如果您需要一个可变映射（可修改的副本），可以使用 `Map.of(Platform.environment)` 。
 
 ```dart
 final envVarMap = Platform.environment;
@@ -447,19 +463,22 @@ print('PATH = ${envVarMap['PATH']}');
 ```
 
 `Platform` provides other useful properties that give information about the machine, OS, and currently running app. For example:
-`Platform` 提供其他有用的属性，这些属性提供有关机器、操作系统和当前正在运行的应用程序的信息。例如：
+
+​	`Platform` 提供其他有用的属性，这些属性提供有关机器、操作系统和当前正在运行的应用程序的信息。例如：
 
 - [`Platform.isMacOS()`](https://api.dart.dev/stable/dart-io/Platform/isMacOS.html)
 - [`Platform.numberOfProcessors`](https://api.dart.dev/stable/dart-io/Platform/numberOfProcessors.html)
 - [`Platform.script`](https://api.dart.dev/stable/dart-io/Platform/script.html)
 
-## Setting exit codes 设置退出代码
+## 设置退出代码 Setting exit codes 
 
 The `dart:io` library defines a top-level property, `exitCode`, that you can change to set the exit code for the current invocation of the Dart VM. An exit code is a number passed from a Dart app to the parent process to indicate the success, failure, or other state of the execution of the app.
-`dart:io` 库定义了一个顶级属性 `exitCode` ，您可以更改该属性以设置 Dart VM 当前调用的退出代码。退出代码是从 Dart 应用程序传递给父进程的数字，用于指示应用程序执行的成功、失败或其他状态。
+
+​	`dart:io` 库定义了一个顶级属性 `exitCode` ，您可以更改该属性以设置 Dart VM 当前调用的退出代码。退出代码是从 Dart 应用程序传递给父进程的数字，用于指示应用程序执行的成功、失败或其他状态。
 
 The `dcat` app sets the exit code in the `_handleError()` function to indicate that an error occurred during execution.
-`dcat` 应用程序在 `_handleError()` 函数中设置退出代码，以指示执行期间发生错误。
+
+​	`dcat` 应用程序在 `_handleError()` 函数中设置退出代码，以指示执行期间发生错误。
 
 ```dart
 Future<void> _handleError(String path) async {
@@ -472,16 +491,20 @@ Future<void> _handleError(String path) async {
 ```
 
 An exit code of `2` indicates that the app encountered an error.
-退出代码 `2` 表示应用程序遇到错误。
+
+​	退出代码 `2` 表示应用程序遇到错误。
 
 An alternative to using `exitCode` is to use the top-level `exit()` function, which sets the exit code and exits the app immediately. For example, the `_handleError()` function could call `exit(2)` instead of setting `exitCode` to 2, but `exit()` would quit the program and it might not process all of the files specified by the running command.
-使用 `exitCode` 的替代方法是使用顶级 `exit()` 函数，该函数设置退出代码并立即退出应用程序。例如， `_handleError()` 函数可以调用 `exit(2)` 而不是将 `exitCode` 设置为 2，但 `exit()` 会退出程序，并且它可能不会处理正在运行的命令指定的所有文件。
+
+​	使用 `exitCode` 的替代方法是使用顶级 `exit()` 函数，该函数设置退出代码并立即退出应用程序。例如， `_handleError()` 函数可以调用 `exit(2)` 而不是将 `exitCode` 设置为 2，但 `exit()` 会退出程序，并且它可能不会处理正在运行的命令指定的所有文件。
 
 *info* Generally speaking, you’re better off using the `exitCode` property, which sets the exit code but allows the program to continue through to its natural completion.
-一般来说，最好使用 `exitCode` 属性，该属性设置退出代码，但允许程序继续执行到其自然完成。
+
+​	一般来说，最好使用 `exitCode` 属性，该属性设置退出代码，但允许程序继续执行到其自然完成。
 
 Although you can use any number for an exit code, by convention, the codes in the table below have the following meanings:
-虽然您可以对退出代码使用任意数字，但根据惯例，下表中的代码具有以下含义：
+
+​	虽然您可以对退出代码使用任意数字，但根据惯例，下表中的代码具有以下含义：
 
 | Code 代码 | Meaning 含义  |
 | --------- | ------------- |
@@ -489,10 +512,11 @@ Although you can use any number for an exit code, by convention, the codes in th
 | 1         | Warnings 警告 |
 | 2         | Errors 错误   |
 
-## Summary 摘要
+## 总结 Summary
 
 This tutorial described some basic APIs found in the following classes from the `dart:io` library:
-本教程介绍了在 `dart:io` 库的以下类中找到的一些基本 API：
+
+​	本教程介绍了在 `dart:io` 库的以下类中找到的一些基本 API：
 
 | API                                                          | Description 说明                                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -508,15 +532,19 @@ This tutorial described some basic APIs found in the following classes from the 
 | [`exit()`](https://api.dart.dev/stable/dart-io/exit.html)    | Sets the exit code and quits 设置退出代码并退出              |
 
 In addition, this tutorial covered two classes from `package:args` that help with parsing and using command-line arguments: [`ArgParser`](https://pub.dev/documentation/args/latest/args/ArgParser-class.html) and [`ArgResults`](https://pub.dev/documentation/args/latest/args/ArgResults-class.html).
-此外，本教程还介绍了 `package:args` 中的两个类，它们有助于解析和使用命令行参数： `ArgParser` 和 `ArgResults` 。
+
+​	此外，本教程还介绍了 `package:args` 中的两个类，它们有助于解析和使用命令行参数： `ArgParser` 和 `ArgResults` 。
 
 For more classes, functions, and properties, consult the API docs for [`dart:io`](https://api.dart.dev/stable/dart-io/dart-io-library.html), [`dart:convert`](https://api.dart.dev/stable/dart-convert/dart-convert-library.html), and [`package:args`](https://pub.dev/documentation/args/latest/args/args-library.html).
-有关更多类、函数和属性，请参阅 `dart:io` 、 `dart:convert` 和 `package:args` 的 API 文档。
+
+​	有关更多类、函数和属性，请参阅 `dart:io` 、 `dart:convert` 和 `package:args` 的 API 文档。
 
 For another example of a command line app, check out the [`command_line`](https://github.com/dart-lang/samples/tree/main/command_line) sample.
-有关命令行应用程序的另一个示例，请查看 `command_line` 示例。
 
-## What next? 接下来做什么？
+​	有关命令行应用程序的另一个示例，请查看 `command_line` 示例。
+
+## What next?
 
 If you’re interested in server-side programming, check out the [next tutorial](https://dart.dev/tutorials/server/httpserver).
-如果您对服务器端编程感兴趣，请查看下一个教程。
+
+​	如果您对服务器端编程感兴趣，请查看下一个教程。
