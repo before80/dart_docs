@@ -10,7 +10,7 @@ draft = false
 
 > 原文: [https://dart.dev/language/class-modifiers](https://dart.dev/language/class-modifiers)
 
-# Class modifiers 类修饰符
+## Class modifiers 类修饰符
 
 *merge_type* **Version note:** Class modifiers, besides `abstract`, require a [language version](https://dart.dev/guides/language/evolution#language-versioning) of at least 3.0.
 

@@ -11,15 +11,17 @@ draft = false
 
 > 原文: [https://dart.dev/language/modifier-reference](https://dart.dev/language/modifier-reference)
 
-# Class modifiers reference 类修饰符参考
+## Class modifiers reference 类修饰符参考
 
 This page contains reference information for [class modifiers](https://dart.dev/language/class-modifiers).
-此页面包含类修饰符的参考信息。
 
-## Valid combinations 有效组合
+​	此页面包含类修饰符的参考信息。
+
+## 有效组合 Valid combinations 
 
 The valid combinations of class modifiers and their resulting capabilities are:
-类修饰符的有效组合及其产生的功能如下：
+
+​	类修饰符的有效组合及其产生的功能如下：
 
 | Declaration 声明            | [Construct](https://dart.dev/language/classes#using-constructors)? 构造？ | [Extend](https://dart.dev/language/extend)? 扩展？ | [Implement](https://dart.dev/language/classes#implicit-interfaces)? 实现？ | [Mix in](https://dart.dev/language/mixins)? 混合？ | [Exhaustive](https://dart.dev/language/branches#exhaustiveness-checking)? 穷举？ |      |
 | --------------------------- | ------------------------------------------------------------ | -------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------- | ------------------------------------------------------------ | ---- |
@@ -39,10 +41,11 @@ The valid combinations of class modifiers and their resulting capabilities are:
 | `mixin`                     | No                                                           | No                                                 | **Yes**                                                      | **Yes**                                            | No                                                           |      |
 | `base mixin`                | No                                                           | No                                                 | No                                                           | **Yes**                                            | No                                                           |      |
 
-## Invalid combinations 无效组合
+## 无效组合 Invalid combinations 
 
 Certain [combinations](https://dart.dev/language/class-modifiers#combining-modifiers) of modifiers are not allowed:
-某些修饰符组合不允许：
+
+​	某些修饰符组合不允许：
 
 | Combination 组合                                             | Reasoning 推理                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

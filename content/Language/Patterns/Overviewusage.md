@@ -126,8 +126,6 @@ You can use patterns in several places in the Dart language:
 
 ​	您可以在 Dart 语言的几个地方使用模式：
 
-
-
 - Local variable [declarations](https://dart.dev/language/patterns#variable-declaration) and [assignments](https://dart.dev/language/patterns#variable-assignment)
 - 局部变量声明和赋值
 - [for and for-in loops](https://dart.dev/language/loops#for-loops)
