@@ -104,9 +104,9 @@ int? lineCount;
 assert(lineCount == null);
 ```
 
-*info* **Note:** Production code ignores the `assert()` call. During development, on the other hand, `assert(*condition*)` throws an exception if *condition* is false. For details, check out [Assert](https://dart.dev/language/error-handling#assert).
+*info* **Note:** Production code ignores the `assert()` call. During development, on the other hand, `assert(condition)` throws an exception if condition is false. For details, check out [Assert](https://dart.dev/language/error-handling#assert).
 
-​	注意：生产代码忽略 `assert()` 调用。另一方面，在开发过程中，如果条件为 false， `assert(*condition*)` 会引发异常。有关详细信息，请查看 Assert。
+​	注意：生产代码忽略 `assert()` 调用。另一方面，在开发过程中，如果条件为 false， `assert(condition)` 会引发异常。有关详细信息，请查看 Assert。
 
 With null safety, you must initialize the values of non-nullable variables before you use them:
 

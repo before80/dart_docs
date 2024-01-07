@@ -13,26 +13,33 @@ draft = false
 ## Effective Dart: Usage 有效的 Dart：用法
 
 You can use these guidelines every day in the bodies of your Dart code. *Users* of your library may not be able to tell that you’ve internalized the ideas here, but *maintainers* of it sure will.
-您可以在 Dart 代码的主体中每天使用这些准则。库的用户可能无法分辨您是否已内化了此处的想法，但维护人员肯定能分辨出来。
 
-## Libraries 库
+​	您可以在 Dart 代码的主体中每天使用这些准则。库的用户可能无法分辨您是否已内化了此处的想法，但维护人员肯定能分辨出来。
+
+## 库 Libraries 
 
 These guidelines help you compose your program out of multiple files in a consistent, maintainable way. To keep these guidelines brief, they use “import” to cover `import` and `export` directives. The guidelines apply equally to both.
-这些准则可帮助您以一致、可维护的方式将程序组合成多个文件。为了使这些准则简明扼要，它们使用“import”来涵盖 `import` 和 `export` 指令。这些准则同样适用于两者。
 
-### DO use strings in `part of` directives 在 `part of` 指令中使用字符串
+​	这些准则可帮助您以一致、可维护的方式将程序组合成多个文件。为了使这些准则简明扼要，它们使用“import”来涵盖 `import` 和 `export` 指令。这些准则同样适用于两者。
+
+### DO use strings in `part of` directives 
+
+​	在 `part of` 指令中使用字符串
 
 Linter rule: [use_string_in_part_of_directives](https://dart.dev/tools/linter-rules/use_string_in_part_of_directives)
 Linter 规则：use_string_in_part_of_directives
 
 Many Dart developers avoid using `part` entirely. They find it easier to reason about their code when each library is a single file. If you do choose to use `part` to split part of a library out into another file, Dart requires the other file to in turn indicate which library it’s a part of.
-许多 Dart 开发人员完全避免使用 `part` 。当每个库都是一个单独的文件时，他们发现更容易理解其代码。如果您确实选择使用 `part` 将库的一部分拆分为另一个文件，Dart 要求另一个文件反过来指明它属于哪个库。
+
+​	许多 Dart 开发人员完全避免使用 `part` 。当每个库都是一个单独的文件时，他们发现更容易理解其代码。如果您确实选择使用 `part` 将库的一部分拆分为另一个文件，Dart 要求另一个文件反过来指明它属于哪个库。
 
 Dart allows the `part of` directive to use the *name* of a library. Naming libraries is a legacy feature that is now [discouraged](https://dart.dev/effective-dart/style#dont-explicitly-name-libraries). Library names can introduce ambiguity when determining which library a part belongs to.
-Dart 允许 `part of` 指令使用库的名称。命名库是一项不推荐使用的旧功能。在确定某个部分属于哪个库时，库名称可能会引起歧义。
+
+​	Dart 允许 `part of` 指令使用库的名称。命名库是一项不推荐使用的旧功能。在确定某个部分属于哪个库时，库名称可能会引起歧义。
 
 The preferred syntax is to use a URI string that points directly to the library file. If you have some library, `my_library.dart`, that contains:
-首选语法是使用直接指向库文件的 URI 字符串。如果您有一些库， `my_library.dart` ，其中包含：
+
+​	首选语法是使用直接指向库文件的 URI 字符串。如果您有一些库， `my_library.dart` ，其中包含：
 
 ```dart
 library my_library;
@@ -41,40 +48,52 @@ part 'some/other/file.dart';
 ```
 
 Then the part file should use the library file’s URI string:
-那么部分文件应使用库文件的 URI 字符串：
+
+​	那么部分文件应使用库文件的 URI 字符串：
 
 ```dart
 part of '../../my_library.dart';
 ```
 
 Not the library name:
-而不是库名称：
+
+​	而不是库名称：
 
 ```dart
 part of my_library;
 ```
 
-### DON’T import libraries that are inside the `src` directory of another package 不要导入另一个软件包的 `src` 目录中的库
+### DON’T import libraries that are inside the `src` directory of another package 
+
+​	不要导入另一个软件包的 `src` 目录中的库
 
 Linter rule: [implementation_imports](https://dart.dev/tools/linter-rules/implementation_imports)
-Linter 规则：implementation_imports
+
+​	Linter 规则：implementation_imports
 
 The `src` directory under `lib` [is specified](https://dart.dev/tools/pub/package-layout) to contain libraries private to the package’s own implementation. The way package maintainers version their package takes this convention into account. They are free to make sweeping changes to code under `src` without it being a breaking change to the package.
-在 `lib` 下的 `src` 目录被指定为包含软件包自己的实现专用的库。软件包维护者对软件包进行版本控制的方式考虑了此约定。他们可以自由地对 `src` 下的代码进行彻底的更改，而不会导致软件包发生重大更改。
+
+​	在 `lib` 下的 `src` 目录被指定为包含软件包自己的实现专用的库。软件包维护者对软件包进行版本控制的方式考虑了此约定。他们可以自由地对 `src` 下的代码进行彻底的更改，而不会导致软件包发生重大更改。
 
 That means that if you import some other package’s private library, a minor, theoretically non-breaking point release of that package could break your code.
-这意味着，如果您导入其他一些软件包的专用库，则该软件包的次要理论上不会中断的重点版本可能会破坏您的代码。
 
-### DON’T allow an import path to reach into or out of `lib` 不要允许导入路径到达或离开 `lib`
+​	这意味着，如果您导入其他一些软件包的专用库，则该软件包的次要理论上不会中断的重点版本可能会破坏您的代码。
+
+### DON’T allow an import path to reach into or out of `lib` 
+
+​	不要允许导入路径到达或离开 `lib`
 
 Linter rule: [avoid_relative_lib_imports](https://dart.dev/tools/linter-rules/avoid_relative_lib_imports)
-Linter 规则：avoid_relative_lib_imports
+
+​	Linter 规则：avoid_relative_lib_imports
 
 A `package:` import lets you access a library inside a package’s `lib` directory without having to worry about where the package is stored on your computer. For this to work, you cannot have imports that require the `lib` to be in some location on disk relative to other files. In other words, a relative import path in a file inside `lib` can’t reach out and access a file outside of the `lib` directory, and a library outside of `lib` can’t use a relative path to reach into the `lib` directory. Doing either leads to confusing errors and broken programs.
-通过 `package:` 导入，您可以访问软件包 `lib` 目录中的库，而无需担心该软件包存储在计算机上的位置。为此，您不能有需要 `lib` 相对于其他文件位于磁盘上某个位置的导入。换句话说， `lib` 中的文件中的相对导入路径无法访问 `lib` 目录之外的文件，而 `lib` 之外的库无法使用相对路径访问 `lib` 目录。执行任一操作都会导致令人困惑的错误和程序崩溃。
+
+​	通过 `package:` 导入，您可以访问软件包 `lib` 目录中的库，而无需担心该软件包存储在计算机上的位置。为此，您不能有需要 `lib` 相对于其他文件位于磁盘上某个位置的导入。换句话说， `lib` 中的文件中的相对导入路径无法访问 `lib` 目录之外的文件，而 `lib` 之外的库无法使用相对路径访问 `lib` 目录。执行任一操作都会导致令人困惑的错误和程序崩溃。
 
 For example, say your directory structure looks like this:
-例如，假设你的目录结构如下所示：
+
+​	例如，假设你的目录结构如下所示：
 
 ```
 my_package
@@ -85,7 +104,8 @@ my_package
 ```
 
 And say `api_test.dart` imports `api.dart` in two ways:
-并且假设 `api_test.dart` 以两种方式导入 `api.dart` ：
+
+​	并且假设 `api_test.dart` 以两种方式导入 `api.dart` ：
 
 ```
 import 'package:my_package/api.dart';
@@ -93,30 +113,37 @@ import '../lib/api.dart';
 ```
 
 Dart thinks those are imports of two completely unrelated libraries. To avoid confusing Dart and yourself, follow these two rules:
-Dart 认为这些是两个完全不相关的库的导入。为了避免让 Dart 和你自己感到困惑，请遵循以下两条规则：
+
+​	Dart 认为这些是两个完全不相关的库的导入。为了避免让 Dart 和你自己感到困惑，请遵循以下两条规则：
 
 - Don’t use `/lib/` in import paths.
-  不要在导入路径中使用 `/lib/` 。
+- 不要在导入路径中使用 `/lib/` 。
 - Don’t use `../` to escape the `lib` directory.
-  不要使用 `../` 来转义 `lib` 目录。
+- 不要使用 `../` 来转义 `lib` 目录。
 
 Instead, when you need to reach into a package’s `lib` directory (even from the same package’s `test` directory or any other top-level directory), use a `package:` import.
-相反，当你需要访问包的 `lib` 目录时（即使是从同一个包的 `test` 目录或任何其他顶级目录），请使用 `package:` 导入。
+
+​	相反，当你需要访问包的 `lib` 目录时（即使是从同一个包的 `test` 目录或任何其他顶级目录），请使用 `package:` 导入。
 
 ```
 import 'package:my_package/api.dart';
 ```
 
 A package should never reach *out* of its `lib` directory and import libraries from other places in the package.
-包绝不应超出其 `lib` 目录，并从包中的其他位置导入库。
 
-### PREFER relative import paths 首选相对导入路径
+​	包绝不应超出其 `lib` 目录，并从包中的其他位置导入库。
+
+### PREFER relative import paths 
+
+​	首选相对导入路径
 
 Linter rule: [prefer_relative_imports](https://dart.dev/tools/linter-rules/prefer_relative_imports)
-Linter 规则：prefer_relative_imports
+
+​	Linter 规则：prefer_relative_imports
 
 Whenever the previous rule doesn’t come into play, follow this one. When an import does *not* reach across `lib`, prefer using relative imports. They’re shorter. For example, say your directory structure looks like this:
-只要前一条规则不起作用，请遵循这一条。当导入不会跨越 `lib` 时，最好使用相对导入。它们更短。例如，假设你的目录结构如下所示：
+
+​	只要前一条规则不起作用，请遵循这一条。当导入不会跨越 `lib` 时，最好使用相对导入。它们更短。例如，假设你的目录结构如下所示：
 
 ```
 my_package
@@ -131,26 +158,24 @@ my_package
 ```
 
 Here is how the various libraries should import each other:
-各种库应如何相互导入：
 
-**lib/api.dart:
-lib/api.dart：**
+​	各种库应如何相互导入：
+
+**lib/api.dart:**
 
 ```
 import 'src/stuff.dart';
 import 'src/utils.dart';
 ```
 
-**lib/src/utils.dart:
-lib/src/utils.dart：**
+**lib/src/utils.dart:**
 
 ```
 import '../api.dart';
 import 'stuff.dart';
 ```
 
-**test/api_test.dart:
-test/api_test.dart：**
+**test/api_test.dart:**
 
 ```
 import 'package:my_package/api.dart'; // Don't reach into 'lib'.
@@ -160,13 +185,17 @@ import 'test_utils.dart'; // Relative within 'test' is fine.
 
 ## Null
 
-### DON’T explicitly initialize variables to `null` 不要显式将变量初始化为 `null`
+### DON’T explicitly initialize variables to `null` 
+
+​	不要显式将变量初始化为 `null`
 
 Linter rule: [avoid_init_to_null](https://dart.dev/tools/linter-rules/avoid_init_to_null)
-Linter 规则：avoid_init_to_null
+
+​	Linter 规则：avoid_init_to_null
 
 If a variable has a non-nullable type, Dart reports a compile error if you try to use it before it has been definitely initialized. If the variable is nullable, then it is implicitly initialized to `null` for you. There’s no concept of “uninitialized memory” in Dart and no need to explicitly initialize a variable to `null` to be “safe”.
-如果变量具有非空类型，则在尝试在明确初始化之前使用它时，Dart 会报告一个编译错误。如果变量可为空，则会隐式将其初始化为 `null` 。Dart 中没有“未初始化内存”的概念，也不需要显式将变量初始化为 `null` 以确保“安全”。
+
+​	如果变量具有非空类型，则在尝试在明确初始化之前使用它时，Dart 会报告一个编译错误。如果变量可为空，则会隐式将其初始化为 `null` 。Dart 中没有“未初始化内存”的概念，也不需要显式将变量初始化为 `null` 以确保“安全”。
 
 ```dart
 Item? bestDeal(List<Item> cart) {
@@ -193,18 +222,23 @@ Item? bestDeal(List<Item> cart) {
 }
 ```
 
-### DON’T use an explicit default value of `null` 不要使用显式默认值 `null`
+### DON’T use an explicit default value of `null` 
+
+​	不要使用显式默认值 `null`
 
 Linter rule: [avoid_init_to_null](https://dart.dev/tools/linter-rules/avoid_init_to_null)
-Linter 规则：avoid_init_to_null
+
+​	Linter 规则：avoid_init_to_null
 
 If you make a nullable parameter optional but don’t give it a default value, the language implicitly uses `null` as the default, so there’s no need to write it.
-如果将可为空参数设为可选但未为其提供默认值，则该语言会隐式使用 `null` 作为默认值，因此无需编写它。
+
+​	如果将可为空参数设为可选但未为其提供默认值，则该语言会隐式使用 `null` 作为默认值，因此无需编写它。
 
 ```dart
 void error([String? message]) {
   stderr.write(message ?? '\n');
 }
+
 void error([String? message = null]) {
   stderr.write(message ?? '\n');
 }
@@ -212,10 +246,13 @@ void error([String? message = null]) {
 
 
 
-### DON’T use `true` or `false` in equality operations 在相等运算中不要使用 `true` 或 `false`
+### DON’T use `true` or `false` in equality operations 
+
+​	在相等运算中不要使用 `true` 或 `false`
 
 Using the equality operator to evaluate a *non-nullable* boolean expression against a boolean literal is redundant. It’s always simpler to eliminate the equality operator, and use the unary negation operator `!` if necessary:
-使用相等运算符来评估非空布尔表达式与布尔文字之间的关系是多余的。消除相等运算符并根据需要使用一元否定运算符 `!` 总是更简单：
+
+​	使用相等运算符来评估非空布尔表达式与布尔文字之间的关系是多余的。消除相等运算符并根据需要使用一元否定运算符 `!` 总是更简单：
 
 ```dart
 if (nonNullableBool) { ... }
@@ -227,7 +264,8 @@ if (nonNullableBool == false) { ... }
 ```
 
 To evaluate a boolean expression that *is nullable*, you should use `??` or an explicit `!= null` check.
-要评估一个可为空的布尔表达式，您应该使用 `??` 或显式 `!= null` 检查。
+
+​	要评估一个可为空的布尔表达式，您应该使用 `??` 或显式 `!= null` 检查。
 
 ```dart
 // If you want null to result in false:
@@ -244,28 +282,35 @@ if (nullableBool == true) { ... }
 ```
 
 `nullableBool == true` is a viable expression, but shouldn’t be used for several reasons:
-`nullableBool == true` 是一个可行的表达式，但出于以下几个原因不应使用：
+
+​	`nullableBool == true` 是一个可行的表达式，但出于以下几个原因不应使用：
 
 - It doesn’t indicate the code has anything to do with `null`.
-  它没有表明代码与 `null` 有任何关系。
+- 它没有表明代码与 `null` 有任何关系。
 - Because it’s not evidently `null` related, it can easily be mistaken for the non-nullable case, where the equality operator is redundant and can be removed. That’s only true when the boolean expression on the left has no chance of producing null, but not when it can.
-  因为它显然与 `null` 无关，所以很容易将其误认为是不可为空的情况，在这种情况下，相等运算符是多余的，可以将其删除。只有当左侧的布尔表达式没有机会生成 null 时，这才是正确的，但当它可以生成 null 时，就不是这样了。
+- 因为它显然与 `null` 无关，所以很容易将其误认为是不可为空的情况，在这种情况下，相等运算符是多余的，可以将其删除。只有当左侧的布尔表达式没有机会生成 null 时，这才是正确的，但当它可以生成 null 时，就不是这样了。
 - The boolean logic is confusing. If `nullableBool` is null, then `nullableBool == true` means the condition evaluates to `false`.
-  布尔逻辑令人困惑。如果 `nullableBool` 为 null，则 `nullableBool == true` 表示条件评估为 `false` 。
+- 布尔逻辑令人困惑。如果 `nullableBool` 为 null，则 `nullableBool == true` 表示条件评估为 `false` 。
 
 The `??` operator makes it clear that something to do with null is happening, so it won’t be mistaken for a redundant operation. The logic is much clearer too; the result of the expression being `null` is the same as the boolean literal.
-`??` 运算符清楚地表明与 null 有关的事情正在发生，因此不会将其误认为是多余的操作。逻辑也更加清晰；表达式结果为 `null` 与布尔文字相同。
+
+​	`??` 运算符清楚地表明与 null 有关的事情正在发生，因此不会将其误认为是多余的操作。逻辑也更加清晰；表达式结果为 `null` 与布尔文字相同。
 
 Using a null-aware operator such as `??` on a variable inside a condition doesn’t promote the variable to a non-nullable type. If you want the variable to be promoted inside the body of the `if` statement, it’s better to use an explicit `!= null` check instead of `??`.
-在条件中对变量使用空感知运算符（例如 `??` ）不会将变量提升为非空类型。如果希望在 `if` 语句的主体中提升变量，最好使用显式 `!= null` 检查，而不是 `??` 。
 
-### AVOID `late` variables if you need to check whether they are initialized 如果需要检查 `late` 变量是否已初始化，请避免使用
+​	在条件中对变量使用空感知运算符（例如 `??` ）不会将变量提升为非空类型。如果希望在 `if` 语句的主体中提升变量，最好使用显式 `!= null` 检查，而不是 `??` 。
+
+### AVOID `late` variables if you need to check whether they are initialized 
+
+​	如果需要检查 `late` 变量是否已初始化，请避免使用
 
 Dart offers no way to tell if a `late` variable has been initialized or assigned to. If you access it, it either immediately runs the initializer (if it has one) or throws an exception. Sometimes you have some state that’s lazily initialized where `late` might be a good fit, but you also need to be able to *tell* if the initialization has happened yet.
-Dart 无法判断 `late` 变量是否已初始化或已赋值。如果访问该变量，它会立即运行初始化程序（如果有）或引发异常。有时，您有一些延迟初始化的状态，其中 `late` 可能很合适，但您还需要能够判断是否已完成初始化。
+
+​	Dart 无法判断 `late` 变量是否已初始化或已赋值。如果访问该变量，它会立即运行初始化程序（如果有）或引发异常。有时，您有一些延迟初始化的状态，其中 `late` 可能很合适，但您还需要能够判断是否已完成初始化。
 
 Although you could detect initialization by storing the state in a `late` variable and having a separate boolean field that tracks whether the variable has been set, that’s redundant because Dart *internally* maintains the initialized status of the `late` variable. Instead, it’s usually clearer to make the variable non-`late` and nullable. Then you can see if the variable has been initialized by checking for `null`.
-虽然您可以通过将状态存储在 `late` 变量中并使用单独的布尔字段来跟踪变量是否已设置来检测初始化，但这很冗余，因为 Dart 在内部维护 `late` 变量的初始化状态。相反，通常更清楚的做法是使变量为非 `late` 且可空。然后，您可以通过检查 `null` 来查看变量是否已初始化。
+
+​	虽然您可以通过将状态存储在 `late` 变量中并使用单独的布尔字段来跟踪变量是否已设置来检测初始化，但这很冗余，因为 Dart 在内部维护 `late` 变量的初始化状态。相反，通常更清楚的做法是使变量为非 `late` 且可空。然后，您可以通过检查 `null` 来查看变量是否已初始化。
 
 Of course, if `null` is a valid initialized value for the variable, then it probably does make sense to have a separate boolean field.
 当然，如果 `null` 是变量的有效初始化值，那么单独设置一个布尔字段可能是有意义的。
