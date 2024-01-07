@@ -6,6 +6,7 @@ type = "docs"
 description = ""
 isCJKLanguage = true
 draft = false
+
 +++
 
 > 原文: [https://dart.dev/language](https://dart.dev/language)
@@ -22,7 +23,7 @@ To learn more about the Dart language, visit the in-depth, individual topic page
 
 For coverage of Dart’s core libraries, check out the [core library documentation](https://dart.dev/libraries). You can also try the [Dart cheatsheet codelab](https://dart.dev/codelabs/dart-cheatsheet), for a more hands-on introduction.
 
-​	有关 Dart 核心库的介绍，请查看核心库文档。您还可以尝试 Dart 速查表代码实验室，以获得更直观的介绍。
+​	有关 Dart 核心库的介绍，请查看[核心库文档]({{< ref "/Corelibraries/Overview">}})。您还可以尝试 [Dart 速查表代码实验室]({{< ref "/Tutorialscodelabs/Codelabs/Languagecheatsheet">}})，以获得更直观的介绍。
 
 ## Hello World 
 
@@ -38,13 +39,13 @@ void main() {
 
 Read more about [the `main()` function](https://dart.dev/language/functions#the-main-function) in Dart, including optional parameters for command-line arguments.
 
-​	阅读有关 Dart 中的 `main()` 函数的更多信息，包括用于命令行参数的可选参数。
+​	阅读有关 Dart 中的 [`main()` 函数]({{< ref "/Language/Functions#main-函数-the-main-function">}})的更多信息，包括用于命令行参数的可选参数。
 
 ## 变量 Variables 
 
 Even in [type-safe](https://dart.dev/language/type-system) Dart code, you can declare most variables without explicitly specifying their type using `var`. Thanks to type inference, these variables’ types are determined by their initial values:
 
-​	即使在类型安全的 Dart 代码中，您也可以使用 `var` 声明大多数变量，而无需明确指定其类型。借助类型推断，这些变量的类型由其初始值确定：
+​	即使在[类型安全]({{< ref "/Language/Types/Typesystem">}})的 Dart 代码中，您也可以使用 `var` 声明大多数变量，而无需明确指定其类型。借助类型推断，这些变量的类型由其初始值确定：
 
 ```dart
 var name = 'Voyager I';
@@ -58,7 +59,8 @@ var image = {
 ```
 
 [Read more](https://dart.dev/language/variables) about variables in Dart, including default values, the `final` and `const` keywords, and static types.
-详细了解 Dart 中的变量，包括默认值、 `final` 和 `const` 关键字以及静态类型。
+
+​	详细了解 [Dart 中的变量]({{< ref "/Language/Syntaxbasics/Variables">}})，包括默认值、 `final` 和 `const` 关键字以及静态类型。
 
 ## 控制流语句 Control flow statements 
 
@@ -88,13 +90,13 @@ while (year < 2016) {
 
 Read more about control flow statements in Dart, including [`break` and `continue`](https://dart.dev/language/loops), [`switch` and `case`](https://dart.dev/language/branches), and [`assert`](https://dart.dev/language/error-handling#assert).
 
-​	详细了解 Dart 中的控制流语句，包括 `break` 和 `continue` 、 `switch` 和 `case` 以及 `assert` 。
+​	详细了解 Dart 中的控制流语句，包括 [`break` 和 `continue`]({{< ref "/Language/Controlflow/Loops#break-和-continue">}}) 、 [`switch` 和 `case`]({{< ref "/Language/Controlflow/Branches">}}) 以及 [`assert`]({{< ref "/Language/Errorhandling#断言-assert">}}) 。
 
 ## 函数 Functions 
 
 [We recommend](https://dart.dev/effective-dart/design#types) specifying the types of each function’s arguments and return value:
 
-​	我们建议指定每个函数的参数和返回值的类型：
+​	我们[建议]({{< ref "/EffectiveDart/Design#types-类型">}})指定每个函数的参数和返回值的类型：
 
 ```dart
 int fibonacci(int n) {
@@ -119,7 +121,7 @@ Besides showing an anonymous function (the argument to `where()`), this code sho
 
 [Read more](https://dart.dev/language/functions) about functions in Dart, including optional parameters, default parameter values, and lexical scope.
 
-​	阅读有关 Dart 中函数的更多信息，包括可选参数、默认参数值和词法作用域。
+​	阅读有关 [Dart 中函数]({{< ref "/Language/Functions">}})的更多信息，包括可选参数、默认参数值和词法作用域。
 
 ## 注释 Comments 
 
@@ -139,7 +141,7 @@ Dart comments usually start with `//`.
 
 [Read more](https://dart.dev/language/comments) about comments in Dart, including how the documentation tooling works.
 
-​	阅读有关 Dart 中注释的更多信息，包括文档工具如何工作。
+​	阅读有关 [Dart 中注释]({{< ref "/Language/Syntaxbasics/Comments">}})的更多信息，包括文档工具如何工作。
 
 ## 导入 Imports 
 
@@ -160,7 +162,7 @@ import 'path/to/my_other_file.dart';
 
 [Read more](https://dart.dev/language/libraries) about libraries and visibility in Dart, including library prefixes, `show` and `hide`, and lazy loading through the `deferred` keyword.
 
-​	阅读有关 Dart 中的库和可见性的更多信息，包括库前缀、 `show` 和 `hide` ，以及通过 `deferred` 关键字进行延迟加载。
+​	阅读有关 [Dart 中的库和可见性]({{< ref "/Language/Syntaxbasics/Librariesimports">}})的更多信息，包括库前缀、 `show` 和 `hide` ，以及通过 `deferred` 关键字进行延迟加载。
 
 ## 类 Classes 
 
@@ -201,7 +203,7 @@ class Spacecraft {
 
 [Read more](https://dart.dev/language/built-in-types#strings) about strings, including string interpolation, literals, expressions, and the `toString()` method.
 
-​	阅读有关字符串的更多信息，包括字符串插值、文字、表达式和 `toString()` 方法。
+​	阅读有关[字符串]({{< ref "/Language/Types/Built-intypes#字符串-strings">}})的更多信息，包括字符串插值、文字、表达式和 `toString()` 方法。
 
 You might use the `Spacecraft` class like this:
 
@@ -217,7 +219,7 @@ voyager3.describe();
 
 [Read more](https://dart.dev/language/classes) about classes in Dart, including initializer lists, optional `new` and `const`, redirecting constructors, `factory` constructors, getters, setters, and much more.
 
-​	详细了解 Dart 中的类，包括初始化器列表、可选 `new` 和 `const` 、重定向构造函数、 `factory` 构造函数、getter、setter 等。
+​	详细了解 [Dart 中的类]({{< ref "/Language/Classesobjects/Classes">}})，包括初始化器列表、可选 `new` 和 `const` 、重定向构造函数、 `factory` 构造函数、getter、setter 等。
 
 ## 枚举 Enums 
 
@@ -276,7 +278,7 @@ if (!yourPlanet.isGiant) {
 
 [Read more](https://dart.dev/language/enums) about enums in Dart, including enhanced enum requirements, automatically introduced properties, accessing enumerated value names, switch statement support, and much more.
 
-​	详细了解 Dart 中的枚举，包括增强的枚举要求、自动引入的属性、访问枚举值名称、switch 语句支持等。
+​	详细了解 [Dart 中的枚举]({{< ref "/Language/Classesobjects/Enums">}})，包括增强的枚举要求、自动引入的属性、访问枚举值名称、switch 语句支持等。
 
 ## 继承 Inheritance 
 
@@ -294,7 +296,7 @@ class Orbiter extends Spacecraft {
 
 [Read more](https://dart.dev/language/extend) about extending classes, the optional `@override` annotation, and more.
 
-​	详细了解扩展类、可选 `@override` 注释等。
+​	详细了解[扩展类]({{< ref "/Language/Classesobjects/Extendaclass">}})、可选 `@override` 注释等。
 
 ## 混入 Mixins 
 
@@ -328,7 +330,7 @@ class PilotedCraft extends Spacecraft with Piloted {
 
 [Read more](https://dart.dev/language/mixins) about mixins.
 
-​	详细了解 mixin。
+​	详细了解 [mixin]({{< ref "/Language/Classesobjects/Mixins">}})。
 
 ## 接口和抽象类 Interfaces and abstract classes 
 
@@ -344,7 +346,7 @@ class MockSpaceship implements Spacecraft {
 
 Read more about [implicit interfaces](https://dart.dev/language/classes#implicit-interfaces), or about the explicit [`interface` keyword](https://dart.dev/language/class-modifiers#interface).
 
-​	详细了解隐式接口或显式 `interface` 关键字。
+​	详细了解[隐式接口]({{< ref "/Language/Classesobjects/Classes#隐式接口-implicit-interfaces">}})或显式 [`interface` 关键字]({{< ref "/Language/Classmodifiers/Overviewusage#interface">}})。
 
 You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
 
@@ -368,7 +370,7 @@ Any class extending `Describable` has the `describeWithEmphasis()` method, which
 
 [Read more](https://dart.dev/language/class-modifiers#abstract) about abstract classes and methods.
 
-​	详细了解抽象类和方法。
+​	详细了解[抽象类]({{< ref "/Language/Classmodifiers/Overviewusage#abstract">}})和方法。
 
 ## 异步 Async 
 
@@ -436,7 +438,7 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async {
 
 [Read more](https://dart.dev/language/async) about asynchrony support, including `async` functions, `Future`, `Stream`, and the asynchronous loop (`await for`).
 
-​	阅读有关异步支持的更多信息，包括 `async` 函数、 `Future` 、 `Stream` 和异步循环 ( `await for` )。
+​	阅读有关[异步支持]({{< ref "/Language/Concurrency/Asynchronoussupport">}})的更多信息，包括 `async` 函数、 `Future` 、 `Stream` 和异步循环 ( `await for` )。
 
 ## 异常 Exceptions 
 
@@ -475,7 +477,7 @@ Note that the code above is asynchronous; `try` works for both synchronous code 
 
 [Read more](https://dart.dev/language/error-handling#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between `Error` and `Exception`.
 
-​	阅读有关异常的更多信息，包括堆栈跟踪、 `rethrow` 以及 `Error` 和 `Exception` 之间的差异。
+​	阅读有关[异常]({{< ref "/Language/Errorhandling#exceptions-异常">}})的更多信息，包括堆栈跟踪、 `rethrow` 以及 `Error` 和 `Exception` 之间的差异。
 
 ## 重要概念 Important concepts 
 
@@ -485,7 +487,7 @@ As you continue to learn about the Dart language, keep these facts and concepts 
 
 - Everything you can place in a variable is an *object*, and every object is an instance of a *class*. Even numbers, functions, and `null` are objects. With the exception of `null` (if you enable [sound null safety](https://dart.dev/null-safety)), all objects inherit from the [`Object`](https://api.dart.dev/stable/dart-core/Object-class.html) class.
   
-- 您可以放入变量中的所有内容都是对象，每个对象都是某个类的实例。即使是数字、函数和 `null` 也是对象。除了 `null` （如果您启用了健全的空安全）之外，所有对象都继承自 `Object` 类。
+- 您可以放入变量中的所有内容都是对象，每个对象都是某个类的实例。即使是数字、函数和 `null` 也是对象。除了 `null` （如果您启用了[健全的空安全]({{< ref "/Language/Nullsafety/Soundnullsafety">}})）之外，所有对象都继承自 `Object` 类。
   
   *merge_type* **Version note:** [Null safety](https://dart.dev/null-safety) was introduced in Dart 2.12. Using null safety requires a [language version](https://dart.dev/guides/language/evolution#language-versioning) of at least 2.12.
   
@@ -497,11 +499,11 @@ As you continue to learn about the Dart language, keep these facts and concepts 
   
 - If you enable [null safety](https://dart.dev/null-safety), variables can’t contain `null` unless you say they can. You can make a variable nullable by putting a question mark (`?`) at the end of its type. For example, a variable of type `int?` might be an integer, or it might be `null`. If you *know* that an expression never evaluates to `null` but Dart disagrees, you can add `!` to assert that it isn’t null (and to throw an exception if it is). An example: `int x = nullableButNotNullInt!`
   
-- 如果您启用空安全，则变量不能包含 `null` ，除非您说它们可以。您可以在其类型的末尾放置一个问号 ( `?` ) 来使变量可为 null。例如，类型为 `int?` 的变量可以是整数，也可以是 `null` 。如果您知道某个表达式永远不会计算为 `null` ，但 Dart 不这么认为，则可以添加 `!` 来断言它不是 null（如果它是 null，则抛出异常）。示例： `int x = nullableButNotNullInt!`
+- 如果您启用[空安全]({{< ref "/Language/Nullsafety/Soundnullsafety">}})，则变量不能包含 `null` ，除非您说它们可以。您可以在其类型的末尾放置一个问号 ( `?` ) 来使变量可为 null。例如，类型为 `int?` 的变量可以是整数，也可以是 `null` 。如果您知道某个表达式永远不会计算为 `null` ，但 Dart 不这么认为，则可以添加 `!` 来断言它不是 null（如果它是 null，则抛出异常）。示例： `int x = nullableButNotNullInt!`
   
 - When you want to explicitly say that any type is allowed, use the type `Object?` (if you’ve enabled null safety), `Object`, or—if you must defer type checking until runtime—the [special type `dynamic`](https://dart.dev/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking).
   
-- 当您想要明确地说允许任何类型时，请使用类型 `Object?` （如果您已启用空安全）、 `Object` ，或者——如果您必须将类型检查推迟到运行时——特殊类型 `dynamic` 。
+- 当您想要明确地说允许任何类型时，请使用类型 `Object?` （如果您已启用空安全）、 `Object` ，或者——如果您必须将类型检查推迟到运行时——[特殊类型 `dynamic`]({{< ref "/EffectiveDart/Design#avoid-using-dynamic-unless-you-want-to-disable-static-checking-除非您想禁用静态检查否则避免使用-dynamic">}}) 。
   
 - Dart supports generic types, like `List<int>` (a list of integers) or `List<Object>` (a list of objects of any type).
   
@@ -516,7 +518,7 @@ As you continue to learn about the Dart language, keep these facts and concepts 
   
 - Unlike Java, Dart doesn’t have the keywords `public`, `protected`, and `private`. If an identifier starts with an underscore (`_`), it’s private to its library. For details, see [Libraries and imports](https://dart.dev/language/libraries).
   
-- 与 Java 不同，Dart 没有关键字 `public` 、 `protected` 和 `private` 。如果标识符以下划线开头 ( `_` )，则它对库是私有的。有关详细信息，请参阅库和导入。
+- 与 Java 不同，Dart 没有关键字 `public` 、 `protected` 和 `private` 。如果标识符以下划线开头 ( `_` )，则它对库是私有的。有关详细信息，请参阅[库和导入]({{< ref "/Language/Syntaxbasics/Librariesimports">}})。
   
 - *Identifiers* can start with a letter or underscore (`_`), followed by any combination of those characters plus digits.
   
@@ -524,14 +526,14 @@ As you continue to learn about the Dart language, keep these facts and concepts 
   
 - Dart has both *expressions* (which have runtime values) and *statements* (which don’t). For example, the [conditional expression](https://dart.dev/language/operators#conditional-expressions) `condition ? expr1 : expr2` has a value of `expr1` or `expr2`. Compare that to an [if-else statement](https://dart.dev/language/branches#if), which has no value. A statement often contains one or more expressions, but an expression can’t directly contain a statement.
   
-- Dart 既有表达式（具有运行时值）又有语句（没有值）。例如，条件表达式 `condition ? expr1 : expr2` 的值为 `expr1` 或 `expr2` 。将其与没有值的 if-else 语句进行比较。语句通常包含一个或多个表达式，但表达式不能直接包含语句。
+- Dart 既有表达式（具有运行时值）又有语句（没有值）。例如，[条件表达式]({{< ref "/Language/Syntaxbasics/Operators#条件表达式-conditional-expressions">}}) `condition ? expr1 : expr2` 的值为 `expr1` 或 `expr2` 。将其与没有值的 [if-else 语句]({{< ref "/Language/Controlflow/Branches#if">}})进行比较。语句通常包含一个或多个表达式，但表达式不能直接包含语句。
   
 - Dart tools can report two kinds of problems: *warnings* and *errors*. Warnings are just indications that your code might not work, but they don’t prevent your program from executing. Errors can be either compile-time or run-time. A compile-time error prevents the code from executing at all; a run-time error results in an [exception](https://dart.dev/language/error-handling#exceptions) being raised while the code executes.
   
-- Dart 工具可以报告两种问题：警告和错误。警告只是表明您的代码可能无法运行，但它们不会阻止您的程序执行。错误可以是编译时错误或运行时错误。编译时错误会阻止代码执行；运行时错误会导致在代码执行时引发异常。
+- Dart 工具可以报告两种问题：警告和错误。警告只是表明您的代码可能无法运行，但它们不会阻止您的程序执行。错误可以是编译时错误或运行时错误。编译时错误会阻止代码执行；运行时错误会导致在代码执行时引发[异常]({{< ref "/Language/Errorhandling#exceptions-异常">}})。
 
 ## 其他资源 Additional resources 
 
 You can find more documentation and code samples in the [core library documentation](https://dart.dev/libraries/dart-core) and the [Dart API reference](https://api.dart.dev/). This site’s code follows the conventions in the [Dart style guide](https://dart.dev/effective-dart/style).
 
-​	您可以在核心库文档和 Dart API 参考中找到更多文档和代码示例。此网站的代码遵循 Dart 风格指南中的约定。
+​	您可以在[核心库文档]({{< ref "/Corelibraries/dartcore">}})和 [Dart API 参考](https://api.dart.dev/)中找到更多文档和代码示例。此网站的代码遵循 [Dart 风格指南]({{< ref "/EffectiveDart/Style">}})中的约定。
