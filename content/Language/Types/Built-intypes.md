@@ -190,7 +190,7 @@ var s4 = "It's even easier to use the other delimiter.";
 
 You can put the value of an expression inside a string by using `${`*`expression`*`}`. If the expression is an identifier, you can skip the {}. To get the string corresponding to an object, Dart calls the object’s `toString()` method.
 
-​	您可以使用 `${` `expression` `}` 将表达式的值放入字符串中。如果表达式是标识符，则可以跳过 {}。要获取与对象对应的字符串，Dart 会调用该对象的 `toString()` 方法。
+​	您可以使用 `${` `expression` `}` 将表达式的值放入字符串中。如果表达式是标识符，则可以省略 {}。要获取与对象对应的字符串，Dart 会调用该对象的 `toString()` 方法。
 
 ```dart
 var s = 'string interpolation';
@@ -280,9 +280,9 @@ To represent boolean values, Dart has a type named `bool`. Only two objects have
 
 ​	为了表示布尔值，Dart 具有名为 `bool` 的类型。只有两个对象具有 bool 类型：布尔文字 `true` 和 `false` ，它们都是编译时常量。
 
-Dart’s type safety means that you can’t use code like `if (*nonbooleanValue*)` or `assert (*nonbooleanValue*)`. Instead, explicitly check for values, like this:
+Dart’s type safety means that you can’t use code like `if (nonbooleanValue)` or `assert (nonbooleanValue)`. Instead, explicitly check for values, like this:
 
-​	Dart 的类型安全性意味着您不能使用类似 `if (*nonbooleanValue*)` 或 `assert (*nonbooleanValue*)` 的代码。相反，请显式检查值，如下所示：
+​	Dart 的类型安全性意味着您不能使用类似 `if (nonbooleanValue)` 或 `assert (nonbooleanValue)` 的代码。相反，请显式检查值，如下所示：
 
 ```dart
 // Check for an empty string.
@@ -306,15 +306,15 @@ assert(iMeantToDoThis.isNaN);
 
 In Dart, [runes](https://api.dart.dev/stable/dart-core/Runes-class.html) expose the Unicode code points of a string. You can use the [characters package](https://pub.dev/packages/characters) to view or manipulate user-perceived characters, also known as [Unicode (extended) grapheme clusters.](https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries)
 
-​	在 Dart 中，符文公开字符串的 Unicode 代码点。您可以使用 characters 包来查看或操作用户感知的字符，也称为 Unicode（扩展）字形簇。
+​	在 Dart 中，符文公开字符串的 Unicode 码点。您可以使用 characters 包来查看或操作用户感知的字符，也称为 Unicode（扩展）字形簇。
 
 Unicode defines a unique numeric value for each letter, digit, and symbol used in all of the world’s writing systems. Because a Dart string is a sequence of UTF-16 code units, expressing Unicode code points within a string requires special syntax. The usual way to express a Unicode code point is `\uXXXX`, where XXXX is a 4-digit hexadecimal value. For example, the heart character (♥) is `\u2665`. To specify more or less than 4 hex digits, place the value in curly brackets. For example, the laughing emoji (😆) is `\u{1f606}`.
 
-​	Unicode 为所有世界书写系统中使用的每个字母、数字和符号定义了一个唯一的数字值。由于 Dart 字符串是 UTF-16 代码单元的序列，因此在字符串中表示 Unicode 代码点需要特殊语法。表示 Unicode 代码点的常用方法是 `\uXXXX` ，其中 XXXX 是一个 4 位十六进制值。例如，心形字符（♥）是 `\u2665` 。要指定多于或少于 4 位十六进制数字，请将值放在大括号中。例如，笑脸表情符号（😆）是 `\u{1f606}` 。
+​	Unicode 为所有世界书写系统中使用的每个字母、数字和符号定义了一个唯一的数字值。由于 Dart 字符串是 UTF-16 代码单元的序列，因此在字符串中表示 Unicode 码点需要特殊语法。表示 Unicode 码点的常用方法是 `\uXXXX` ，其中 XXXX 是一个 4 位十六进制值。例如，心形字符（♥）是 `\u2665` 。要指定多于或少于 4 位十六进制数字，请将值放在大括号中。例如，笑脸表情符号（😆）是 `\u{1f606}` 。
 
 If you need to read or write individual Unicode characters, use the `characters` getter defined on String by the characters package. The returned [`Characters`](https://pub.dev/documentation/characters/latest/characters/Characters-class.html) object is the string as a sequence of grapheme clusters. Here’s an example of using the characters API:
 
-​	如果您需要读取或写入单个 Unicode 字符，请使用 characters 包在 String 上定义的 `characters` getter。返回的 `Characters` 对象是字符串作为一系列字素簇。以下是如何使用 characters API 的示例：
+​	如果您需要读取或写入单个 Unicode 字符，请使用 characters 包在 String 上定义的 `characters` getter。返回的 `Characters` 对象是字符串作为一系列字形簇。以下是如何使用 characters API 的示例：
 
 ```dart
 import 'package:characters/characters.dart';
@@ -340,7 +340,7 @@ The last character: 🇩🇰
 
 For details on using the characters package to manipulate strings, see the [example](https://pub.dev/packages/characters/example) and [API reference](https://pub.dev/documentation/characters) for the characters package.
 
-​	有关使用 characters 包来操作字符串的详细信息，请参阅 characters 包的示例和 API 参考。
+​	有关使用 characters 包来操作字符串的详细信息，请参阅 characters 包的[示例](https://pub.dev/packages/characters/example)和 [API 参考](https://pub.dev/documentation/characters)。
 
 ## 符号 Symbols 
 
@@ -350,7 +350,7 @@ A [`Symbol`](https://api.dart.dev/stable/dart-core/Symbol-class.html) object rep
 
 To get the symbol for an identifier, use a symbol literal, which is just `#` followed by the identifier:
 
-​	要获取标识符的符号，请使用符号文字，它只是 `#` 后跟标识符：
+​	要获取标识符的符号，请使用符号字面量，它只是 `#` 后跟标识符：
 
 ```nocode
 #radix
@@ -359,4 +359,4 @@ To get the symbol for an identifier, use a symbol literal, which is just `#` fol
 
 Symbol literals are compile-time constants.
 
-​	符号文字是编译时常量。
+​	符号字面量是编译时常量。

@@ -43,8 +43,8 @@ Avoid using these words as identifiers. However, if necessary, the keywords mark
 - 带有上标 1 的词是上下文关键字，仅在特定位置有意义。它们是任何地方的有效标识符。
 - Words with the superscript **2** are **built-in identifiers**. These keywords are valid identifiers in most places, but they can’t be used as class or type names, or as import prefixes.
 - 带有上标 2 的词是内置标识符。这些关键字在大多数地方都是有效的标识符，但不能用作类或类型名称，也不能用作导入前缀。
-- Words with the superscript **3** are limited reserved words related to [asynchrony support](https://dart.dev/language/async). You can’t use `await` or `yield` as an identifier in any function body marked with `async`, `async*`, or `sync*`.
-- 带有上标 3 的词是与异步支持相关的有限保留字。您不能在用 `async` 、 `async*` 或 `sync*` 标记的任何函数体中将 `await` 或 `yield` 用作标识符。
+- Words with the superscript **3** are limited reserved words related to [asynchrony support](https://dart.dev/language/async). You can’t use `await` or `yield` as an identifier in any function body marked with `async`, `async`, or `sync`.
+- 带有上标 3 的词是与异步支持相关的有限保留字。您不能在用 `async` 、 `async` 或 `sync` 标记的任何函数体中将 `await` 或 `yield` 用作标识符。
 
 All other words in the table are **reserved words**, which can’t be identifiers.
 

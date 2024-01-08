@@ -36,7 +36,7 @@ var record = ('first', a: 2, b: true, 'last');
 
 *Record type annotations* are comma-delimited lists of types enclosed in parentheses. You can use record type annotations to define return types and parameter types. For example, the following `(int, int)` statements are record type annotations:
 
-​	记录类型注释是逗号分隔的类型列表，用括号括起来。您可以使用记录类型注释来定义返回类型和参数类型。例如，以下 `(int, int)` 语句是记录类型注释：
+​	记录类型注解是逗号分隔的类型列表，用括号括起来。您可以使用记录类型注解来定义返回类型和参数类型。例如，以下 `(int, int)` 语句是记录类型注解：
 
 ```dart
 (int, int) swap((int, int) record) {
@@ -47,7 +47,7 @@ var record = ('first', a: 2, b: true, 'last');
 
 Fields in record expressions and type annotations mirror how [parameters and arguments](https://dart.dev/language/functions#parameters) work in functions. Positional fields go directly inside the parentheses:
 
-​	记录表达式和类型注释中的字段反映了函数中参数和参数的工作方式。位置字段直接放在括号内：
+​	记录表达式和类型注解中的字段反映了函数中参数和参数的工作方式。位置字段直接放在括号内：
 
 ```dart
 // Record type annotation in a variable declaration:
@@ -59,7 +59,7 @@ record = ('A string', 123);
 
 In a record type annotation, named fields go inside a curly brace-delimited section of type-and-name pairs, after all positional fields. In a record expression, the names go before each field value with a colon after:
 
-​	在记录类型注释中，命名字段位于所有位置字段之后，位于用大括号分隔的类型和名称对部分内。在记录表达式中，名称位于每个字段值之前，后面带冒号：
+​	在记录类型注解中，命名字段位于所有位置字段之后，位于用大括号分隔的类型和名称对部分内。在记录表达式中，名称位于每个字段值之前，后面带冒号：
 
 ```dart
 // Record type annotation in a variable declaration:
@@ -83,7 +83,7 @@ The names of named fields in a record type are part of the [record’s type defi
 
 In a record type annotation, you can also name the *positional* fields, but these names are purely for documentation and don’t affect the record’s type:
 
-​	在记录类型注释中，您还可以命名位置字段，但这些名称纯粹用于文档，不会影响记录的类型：
+​	在记录类型注解中，您还可以命名位置字段，但这些名称纯粹用于文档，不会影响记录的类型：
 
 ```dart
 (int a, int b) recordAB = (1, 2);
