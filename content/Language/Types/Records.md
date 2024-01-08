@@ -203,4 +203,4 @@ You can return multiple values from a function without records, but other method
 
 *info* **Note:** Records’ multiple-return and heterogeneous-type characteristics enable parallelization of futures of different types, which you can read about in the [`dart:async` documentation](https://dart.dev/libraries/dart-async#handling-errors-for-multiple-futures).
 
-​	注意：记录的多重返回和异构类型特性支持不同类型的期货并行化，您可以在 `dart:async` 文档中了解相关信息。
+​	注意：记录的多重返回和异构类型特性支持不同类型的 futures 并行化，您可以在 `dart:async` 文档中了解相关信息。

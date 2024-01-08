@@ -6,6 +6,7 @@ type = "docs"
 description = ""
 isCJKLanguage = true
 draft = false
+
 +++
 
 > 原文: [https://dart.dev/language/collections](https://dart.dev/language/collections)
@@ -36,7 +37,7 @@ var list = [1, 2, 3];
 
 You can add a comma after the last item in a Dart collection literal. This *trailing comma* doesn’t affect the collection, but it can help prevent copy-paste errors.
 
-​	您可以在 Dart 集合字面量的最后一个项目后添加逗号。此尾随逗号不会影响集合，但可以帮助防止复制粘贴错误。
+​	您可以在 Dart 集合字面量的最后一个项后添加逗号。此尾随逗号不会影响集合，但可以帮助防止复制粘贴错误。
 
 ```dart
 var list = [
@@ -102,7 +103,7 @@ var names = <String>{};
 
 *info* **Set or map?** The syntax for map literals is similar to that for set literals. Because map literals came first, `{}` defaults to the `Map` type. If you forget the type annotation on `{}` or the variable it’s assigned to, then Dart creates an object of type `Map<dynamic, dynamic>`.
 
-​	集合还是映射？映射字面量的语法类似于集合字面量的语法。由于映射字面量先出现，因此 `{}` 默认类型为 `Map` 。如果您忘记了 `{}` 或其所赋值变量的类型注释，那么 Dart 会创建一个类型为 `Map<dynamic, dynamic>` 的对象。
+​	集合还是映射？映射字面量的语法类似于集合字面量的语法。由于映射字面量先出现，因此 `{}` 默认类型为 `Map` 。如果您忘记了 `{}` 或其所赋值变量的类型注解，那么 Dart 会创建一个类型为 `Map<dynamic, dynamic>` 的对象。
 
 Add items to an existing set using the `add()` or `addAll()` methods:
 
@@ -288,7 +289,7 @@ Dart offers **collection if** and **collection for** for use in list, map, and s
 
 Here’s an example of using **collection if** to create a list with three or four items in it:
 
-​	以下是如何使用集合 if 创建包含三或四个项目的列表的示例：
+​	以下是如何使用集合 if 创建包含三或四个项的列表的示例：
 
 ```dart
 var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
@@ -304,7 +305,7 @@ var nav = ['Home', 'Furniture', 'Plants', if (login case 'Manager') 'Inventory']
 
 Here’s an example of using **collection for** to manipulate the items of a list before adding them to another list:
 
-​	以下是如何使用集合 for 在将项目添加到另一个列表之前操作该列表的项目的示例：
+​	以下是如何使用集合 for 在将项添加到另一个列表之前操作该列表的项的示例：
 
 ```dart
 var listOfInts = [1, 2, 3];
