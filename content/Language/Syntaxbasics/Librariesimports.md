@@ -14,11 +14,11 @@ draft = false
 
 The `import` and `library` directives can help you create a modular and shareable code base. Libraries not only provide APIs, but are a unit of privacy: identifiers that start with an underscore (`_`) are visible only inside the library. *Every Dart file (plus its parts) is a [library](https://dart.dev/tools/pub/glossary#library)*, even if it doesn’t use a [`library`](https://dart.dev/language/libraries#library-directive) directive.
 
-​	`import` 和 `library` 指令可以帮助您创建模块化且可共享的代码库。库不仅提供 API，而且是一个隐私单元：以下划线开头的标识符 ( `_` ) 仅在库内可见。每个 Dart 文件（及其部分）都是一个库，即使它不使用 `library` 指令。
+​	`import` 和 `library` 指令可以帮助您创建模块化且可共享的代码库。库不仅提供 API，而且是一个隐私单元：以下划线开头的标识符 ( `_` ) 仅在库内可见。每个 Dart 文件（及其部分）都是一个[库]({{< ref "/Packages/Packagereference/Glossary#库-library">}})，即使它不使用 `library` 指令。
 
 Libraries can be distributed using [packages](https://dart.dev/guides/packages).
 
-​	库可以使用包进行分发。
+​	库可以使用[包]({{< ref "/Packages/Howtousepackages">}})进行分发。
 
 *info* If you’re curious why Dart uses underscores instead of access modifier keywords like `public` or `private`, see [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
 
@@ -32,7 +32,7 @@ Use `import` to specify how a namespace from one library is used in the scope of
 
 For example, Dart web apps generally use the [dart:html](https://api.dart.dev/stable/dart-html) library, which they can import like this:
 
-​	例如，Dart Web 应用通常使用 dart:html 库，它们可以像这样导入该库：
+​	例如，Dart Web 应用通常使用 [dart:html]({{< ref "/Corelibraries/darthtml">}}) 库，它们可以像这样导入该库：
 
 ```dart
 import 'dart:html';
@@ -98,7 +98,7 @@ import 'package:lib2/lib2.dart' hide foo;
 
 *report_problem* **Only `dart compile js` supports deferred loading.** Flutter and the Dart VM don’t support deferred loading. To learn more, see [issue #33118](https://github.com/dart-lang/sdk/issues/33118) and [issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
 
-​	只有 `dart compile js` 支持延迟加载。Flutter 和 Dart VM 不支持延迟加载。要了解更多信息，请参阅问题 #33118 和问题 #27776。
+​	只有 `dart compile js` 支持延迟加载。Flutter 和 Dart VM 不支持延迟加载。要了解更多信息，请参阅 [issue #33118](https://github.com/dart-lang/sdk/issues/33118) 和[issue #27776.](https://github.com/dart-lang/sdk/issues/27776)。
 
 To lazily load a library, you must first import it using `deferred as`.
 
@@ -121,7 +121,7 @@ Future<void> greet() async {
 
 In the preceding code, the `await` keyword pauses execution until the library is loaded. For more information about `async` and `await`, see [asynchrony support](https://dart.dev/language/async).
 
-​	在前面的代码中， `await` 关键字会暂停执行，直到加载该库。有关 `async` 和 `await` 的更多信息，请参阅异步支持。
+​	在前面的代码中， `await` 关键字会暂停执行，直到加载该库。有关 `async` 和 `await` 的更多信息，请参阅[异步支持]({{< ref "/Language/Concurrency/Asynchronoussupport">}})。
 
 You can invoke `loadLibrary()` multiple times on a library without problems. The library is loaded only once.
 
@@ -135,14 +135,14 @@ Keep in mind the following when you use deferred loading:
 - 延迟加载库的常量在导入文件中不是常量。请记住，这些常量在延迟加载库加载之前不存在。
 - You can’t use types from a deferred library in the importing file. Instead, consider moving interface types to a library imported by both the deferred library and the importing file.
 - 您不能在导入文件中使用延迟加载库中的类型。相反，请考虑将接口类型移至延迟加载库和导入文件都导入的库。
-- Dart implicitly inserts `loadLibrary()` into the namespace that you define using `deferred as *namespace*`. The `loadLibrary()` function returns a [`Future`](https://dart.dev/libraries/dart-async#future).
-- Dart 会将 `loadLibrary()` 隐式插入您使用 `deferred as *namespace*` 定义的命名空间中。 `loadLibrary()` 函数返回 `Future` 。
+- Dart implicitly inserts `loadLibrary()` into the namespace that you define using `deferred as namespace`. The `loadLibrary()` function returns a [`Future`](https://dart.dev/libraries/dart-async#future).
+- Dart 会将 `loadLibrary()` 隐式插入您使用 `deferred as namespace` 定义的命名空间中。 `loadLibrary()` 函数返回 `Future` 。
 
 ### `library` 指令 - The `library` directive 
 
 To specify library-level [doc comments](https://dart.dev/effective-dart/documentation#consider-writing-a-library-level-doc-comment) or [metadata annotations](https://dart.dev/language/metadata), attach them to a `library` declaration at the start of the file.
 
-​	要指定库级文档注释或元数据注释，请将它们附加到文件开头处的 `library` 声明。
+​	要指定库级[文档注释]({{< ref "/EffectiveDart/Documentation#consider-writing-a-library-level-doc-comment-考虑编写库级文档注释">}})或[元数据注释]({{< ref "/Language/Syntaxbasics/Metadata">}})，请将它们附加到文件开头处的 `library` 声明。
 
 ```dart
 /// A really great test library.
@@ -154,7 +154,7 @@ library;
 
 See [Create Packages](https://dart.dev/guides/libraries/create-packages) for advice on how to implement a package, including:
 
-​	有关如何实现包的建议，请参阅创建包，包括：
+​	有关如何[实现包]({{< ref "/Packages/Creatingpackages">}})的建议，请参阅创建包，包括：
 
 - How to organize library source code.
 - 如何组织库源代码。

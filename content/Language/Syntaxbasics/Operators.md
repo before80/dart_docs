@@ -424,7 +424,7 @@ querySelector('#confirm') // Get an object.
 
 *merge_type* **Version note:** The `?..` syntax requires a [language version](https://dart.dev/guides/language/evolution#language-versioning) of at least 2.12.
 
-​	版本说明： `?..` 语法要求语言版本至少为 2.12。
+​	版本说明： `?..` 语法要求[语言版本]({{< ref "">}})至少为 2.12。
 
 The previous code is equivalent to the following:
 
@@ -488,4 +488,4 @@ You’ve seen most of the remaining operators in other examples:
 
 For more information about the `.`, `?.`, and `..` operators, see [Classes](https://dart.dev/language/classes).
 
-​	有关 `.` 、 `?.` 和 `..` 运算符的更多信息，请参阅类。
+​	有关 `.` 、 `?.` 和 `..` 运算符的更多信息，请参阅[类]({{< ref "/Language/Classesobjects/Classes">}})。
